@@ -358,12 +358,7 @@ public class @PlayerControlScheme : IInputActionCollection, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<Joystick>"",
-                    ""isOptional"": true,
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]

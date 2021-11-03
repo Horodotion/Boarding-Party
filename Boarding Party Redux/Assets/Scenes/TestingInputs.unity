@@ -351,11 +351,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_JoinBehavior
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_NotificationBehavior
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: bda84ad1-f7f0-44ca-8e8a-a2bb830be19e
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 64ab2428-fe21-4e7e-baa3-21b08f3345c8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 64ab2428-fe21-4e7e-baa3-21b08f3345c8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Gamepad>/start
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <Gamepad>/start
       objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_Name

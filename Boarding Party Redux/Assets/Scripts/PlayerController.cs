@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerState
+{
+    walking,
+    inMenu
+}
+
 public class PlayerController : MonoBehaviour
 {
-    //Variables for the new input system
-    //Listed out as Input actions to make further code more readable
-    //private Gamepad gamepad;
-    private PlayerControlScheme controls;
-    private InputAction primaryButton;
-    private InputAction secondaryButton;
-    private InputAction tertiaryButton;
-    private InputAction utilityButton;
-    private InputAction startButton;
-    private InputAction selectButton;
-    private InputAction movementAxis;
-    private InputAction lookAxis;
-
     //Variables for the player statistics
     public PlayerStats playerStats;
 
@@ -30,48 +23,21 @@ public class PlayerController : MonoBehaviour
     private string animUpDown = "UpDown";
     private string animLeftRight = "LeftRight";
 
+    //Variables for movement
+    private Vector2 moveAxis;
+    private Vector2 lookAxis;
+
 
     void Awake()
     {
         //Setting up a new instance of scripts to not run into errors with other players
-        controls = new PlayerControlScheme();
         playerStats = new PlayerStats();
-
-        //Setting up the naming convention of the buttons to be more readable throughout scripts
-        primaryButton = controls.PlayerControls.primaryButton;
-        secondaryButton = controls.PlayerControls.secondaryButton;
-        tertiaryButton = controls.PlayerControls.tertiaryButton;
-        utilityButton = controls.PlayerControls.utilityButton;
-        startButton = controls.PlayerControls.startButton;
-        selectButton = controls.PlayerControls.selectButton;
-        movementAxis = controls.PlayerControls.movementAxis;
-        lookAxis = controls.PlayerControls.lookAxis;
-
-        //Getting a reference to the pieces of the game object and children
-        ourPlayerController = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
-    }
-
-    void OnEnable()
-    {
-        //Enabling the basic controls for the player
-        controls.PlayerControls.Enable();
-
-        //Setting up the functions that will be called when using a button
-        //Axises don't need to be called this way since they are readonly
-        primaryButton.performed += PrimaryButton;
-        secondaryButton.performed += SecondaryButton;
-        tertiaryButton.performed += TertiaryButton;
-        utilityButton.performed += UtilityButton;
-        startButton.performed += StartButton;
-        selectButton.performed += SelectButton;
-
     }
 
     void FixedUpdate()
     {
-        Vector3 moveDirection = new Vector3(movementAxis.ReadValue<Vector2>().x, 0, movementAxis.ReadValue<Vector2>().y);
-        Vector3 lookDirection = new Vector3(lookAxis.ReadValue<Vector2>().x, 0, lookAxis.ReadValue<Vector2>().y);
+        Vector3 moveDirection = new Vector3(moveAxis.x, 0, moveAxis.y);
+        Vector3 lookDirection = new Vector3(lookAxis.x, 0, lookAxis.y);
 
         //This part controls the player's movement and 
         if (moveDirection != Vector3.zero)
@@ -114,37 +80,51 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void PrimaryButton(InputAction.CallbackContext ctx)
+    public void SpawnPlayer()
     {
-        Debug.Log("a");
+        //Getting a reference to the pieces of the game object and children
+        ourPlayerController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
 
-    public void SecondaryButton(InputAction.CallbackContext ctx)
+    public void OnPrimaryButton(InputAction.CallbackContext ctx)
     {
-
-        Debug.Log(Gamepad.all);
+        if (ctx.performed)
+        {
+            Debug.Log("a");
+        }
     }
 
-    public void TertiaryButton(InputAction.CallbackContext ctx)
+    public void OnSecondaryButton(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            Debug.Log(Gamepad.current);
+        }
+    }
+
+    public void OnTertiaryButton(InputAction.CallbackContext ctx)
     {     
 
     }
 
-    public void UtilityButton(InputAction.CallbackContext ctx)
+    public void OnUtilityButton(InputAction.CallbackContext ctx)
     {
 
     }
 
-    public void StartButton(InputAction.CallbackContext ctx)
+    public void OnStartButton(InputAction.CallbackContext ctx)
     {
         Debug.Log("start");
     }
 
-    public void SelectButton(InputAction.CallbackContext ctx)
+    public void OnSelectButton(InputAction.CallbackContext ctx)
     {
         Debug.Log("select");
-        playerStats.ChangeClass(PlayerClass.specops);
     }
+
+    public void OnMovementAxis(InputAction.CallbackContext ctx) => moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+    public void OnLookAxis(InputAction.CallbackContext ctx) => lookAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
 
     void OnPlayerJoined()
     {
