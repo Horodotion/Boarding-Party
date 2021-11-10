@@ -62,18 +62,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2726136345205271944, guid: 7a86967e489b0b0489165437d3354457, type: 3}
   m_PrefabInstance: {fileID: 873191752800352003}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6336760243846219358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3011533529907124875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c6245cd78aabcc45b6c7a915562537f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7750282789914685321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +220,22 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6336760243846219358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3011533529907124875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6245cd78aabcc45b6c7a915562537f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerState: 0
+  playerInputs: {fileID: 0}
+  gun: {fileID: 11400000, guid: 3b0a620f7a02ff34299d9e25a6a329a9, type: 2}
+  firePosition: {fileID: 0}
+  moveSpeed: 050000000500000000000000
+  damage: 0a0000000a00000000000000
+  ourClass: 5

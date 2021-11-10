@@ -5,21 +5,24 @@ using UnityEngine.InputSystem;
 
 public enum PlayerState
 {
-    walking,
-    inMenu
+    inGame,
+    inMenu,
+    idle
 }
 
 public class PlayerController : MonoBehaviour
 {
-    //Variables for the player statistics
-    public PlayerStats playerStats;
+    //Variables to reference other scripts or controls
+    public PlayerState playerState;
+    public InputActionAsset playerInputs;
+    [SerializeField] private Gun gun;
 
-    //Variables for the player Controller
+    //Variables for components on the player Object
     private CharacterController ourPlayerController;
-
+    private Animator animator;
+    public GameObject firePosition;
 
     //Variables for the player animations
-    private Animator animator;
     private string animUpDown = "UpDown";
     private string animLeftRight = "LeftRight";
 
@@ -28,13 +31,45 @@ public class PlayerController : MonoBehaviour
     private Vector2 lookAxis;
 
 
+    //The plain Stat refers to the stat that will be referenced by the player
+    //Base refers to the base stat to return to upon any resetting.
+    //Mods refers to the amount to add to the 
+    public int[] moveSpeed = new int[3] {5, 5, 0};
+    public int[] damage = new int[3] {10, 10, 0};
+
+    public PlayerClass ourClass = PlayerClass.basic;
+
     void Awake()
     {
         //Setting up a new instance of scripts to not run into errors with other players
-        playerStats = new PlayerStats();
+        playerInputs = GetComponent<PlayerInput>().actions;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Enable()
+    {
+        
     }
 
     void FixedUpdate()
+    {
+        switch (playerState)
+        {
+            case (PlayerState.inGame):
+                Movement();
+                break;
+
+            case (PlayerState.inMenu):
+                break;
+
+            case (PlayerState.idle):
+                break;
+        }
+
+    }
+
+    public void Movement()
     {
         Vector3 moveDirection = new Vector3(moveAxis.x, 0, moveAxis.y);
         Vector3 lookDirection = new Vector3(lookAxis.x, 0, lookAxis.y);
@@ -43,7 +78,7 @@ public class PlayerController : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             //Sets the Vector3 to have a magnetude of 1 and then scales it to the time, with an adjustable speed function
-            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * playerStats.moveSpeed;
+            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * moveSpeed[0];
 
             ourPlayerController.Move(moveDirection);
 
@@ -77,7 +112,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
         }
-
     }
 
     public void SpawnPlayer()
@@ -85,6 +119,8 @@ public class PlayerController : MonoBehaviour
         //Getting a reference to the pieces of the game object and children
         ourPlayerController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+
+        firePosition = GetComponentInChildren<SphereCollider>().gameObject;
     }
 
     public void OnPrimaryButton(InputAction.CallbackContext ctx)
@@ -99,7 +135,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            Debug.Log(Gamepad.current);
+            gun.Fire(this);
         }
     }
 

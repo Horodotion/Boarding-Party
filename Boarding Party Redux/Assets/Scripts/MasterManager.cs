@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum Factions
+public enum Faction
 {
     player,
     enemy,
@@ -23,13 +23,15 @@ public enum PlayerClass
 public class MasterManager : MonoBehaviour
 {
     public static MasterManager master;
+    public static List<GameObject> playerList;
+
 
     void Awake()
     {
         if (master != this && master == null)
         {
             master = this;
-            // allGamepads = Gamepad.all;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
