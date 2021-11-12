@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     //Variables to reference other scripts or controls
     public PlayerState playerState;
     public InputActionAsset playerInputs;
-    [SerializeField] private Gun gun;
+    public Gun gunObject;
+    private Gun gun;
 
     //Variables for components on the player Object
     private CharacterController ourPlayerController;
@@ -43,13 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         //Setting up a new instance of scripts to not run into errors with other players
         playerInputs = GetComponent<PlayerInput>().actions;
+        PlayerSpawned();
 
         DontDestroyOnLoad(gameObject);
     }
 
     void Enable()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             case (PlayerState.inGame):
                 Movement();
+                
+                if (gun.nextTimeToFire != 0)
+                {
+                    gun.nextTimeToFire = ReduceToZeroByTime(gun.nextTimeToFire);
+                }
                 break;
 
             case (PlayerState.inMenu):
@@ -111,17 +118,32 @@ public class PlayerController : MonoBehaviour
         if (lookDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+            
+            if (gun.nextTimeToFire == 0)
+            {
+                gun.Fire(this);
+            }
         }
     }
 
-    public void SpawnPlayer()
+    public float ReduceToZeroByTime(float i)
+    {
+        i = Mathf.Clamp(i - Time.deltaTime, 0, Mathf.Infinity);
+        return i;
+    }
+
+    public void PlayerSpawned()
     {
         //Getting a reference to the pieces of the game object and children
         ourPlayerController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
-
         firePosition = GetComponentInChildren<SphereCollider>().gameObject;
+
+        Gun newGun = Instantiate(gunObject);
+        gun = newGun;
     }
+
+
 
     public void OnPrimaryButton(InputAction.CallbackContext ctx)
     {
@@ -156,7 +178,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnSelectButton(InputAction.CallbackContext ctx)
     {
-        Debug.Log("select");
+        Debug.Log("spawned");
+        PlayerSpawned();
     }
 
     public void OnMovementAxis(InputAction.CallbackContext ctx) => moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
