@@ -14,16 +14,10 @@ public class Rifle : Gun
 
         GameObject bullet = Instantiate(gunProjectilePrefab, player.firePosition.transform.position, player.gameObject.transform.rotation);
         ProjectileScript bulletScript = bullet.GetComponent<ProjectileScript>();
-        
-        Renderer[] mats = bullet.GetComponentsInChildren<Renderer>(true);
-        if (mats.Length != 0)
-        {
-            mats[0].material = bullet_m;
-            mats[0].gameObject.SetActive(true);
-        }
+
+        bullet.GetComponentInChildren<Renderer>().material = bullet_m;
 
         AddStats(player, bulletScript);
-
         bulletScript.Launch();
     }
 }

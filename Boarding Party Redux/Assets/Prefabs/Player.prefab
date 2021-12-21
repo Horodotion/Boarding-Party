@@ -75,12 +75,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: 0
+  playerClassScript: {fileID: 0}
   playerInputs: {fileID: 0}
-  gunObject: {fileID: 11400000, guid: 3b0a620f7a02ff34299d9e25a6a329a9, type: 2}
-  gun: {fileID: 0}
+  gun: {fileID: 11400000, guid: 3b0a620f7a02ff34299d9e25a6a329a9, type: 2}
+  genericAbility: {fileID: 11400000, guid: 7b1cb32a1c767f74285eb6c41a1e11df, type: 2}
+  ourPlayerController: {fileID: 0}
   firePosition: {fileID: 0}
-  moveSpeed: 050000000500000000000000
-  damage: 0a0000000a00000000000000
+  moveAxis: {x: 0, y: 0}
+  lookAxis: {x: 0, y: 0}
+  playerStats: {fileID: 11400000, guid: ebd24bb64a7b97147b8018c8857b2900, type: 2}
   ourClass: 5
 --- !u!114 &7750282789914685321
 MonoBehaviour:

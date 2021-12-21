@@ -13,37 +13,43 @@ public enum PlayerState
 public class PlayerController : MonoBehaviour
 {
     //Variables to reference other scripts or controls
-    public PlayerState playerState;
-    public InputActionAsset playerInputs;
-    public Gun gunObject;
-    private Gun gun;
+    [HideInInspector] public PlayerState playerState;
+    public PlayerClassScript playerClassScript;
+    [HideInInspector] public InputActionAsset playerInputs;
+    public Gun gun;
+    public Ability genericAbility;
 
     //Variables for components on the player Object
-    private CharacterController ourPlayerController;
+    [HideInInspector] public CharacterController ourPlayerController;
     private Animator animator;
-    public GameObject firePosition;
+    [HideInInspector] public GameObject firePosition;
 
     //Variables for the player animations
     private string animUpDown = "UpDown";
     private string animLeftRight = "LeftRight";
 
     //Variables for movement
-    private Vector2 moveAxis;
-    private Vector2 lookAxis;
+    [HideInInspector] public Vector2 moveAxis;
+    [HideInInspector] public Vector2 lookAxis;
 
 
-    //The plain Stat refers to the stat that will be referenced by the player
-    //Base refers to the base stat to return to upon any resetting.
-    //Mods refers to the amount to add to the 
-    public int[] moveSpeed = new int[3] {5, 5, 0};
-    public int[] damage = new int[3] {10, 10, 0};
+    //The plain Stat (the first number) refers to the stat that will be referenced by the player
+    //Base (The second number) refers to the base stat to return to upon any resetting.
+    //Max refers to the amount to maximum that a stat can be
+    public Stats playerStats;
 
+
+    //public Dictionary<Stats, int[]> playerStats = new Dictionary<Stats, int[]>();
     public PlayerClass ourClass = PlayerClass.basic;
 
     void Awake()
     {
         //Setting up a new instance of scripts to not run into errors with other players
         playerInputs = GetComponent<PlayerInput>().actions;
+        PlayerClassScript newPlayerClassScript = PlayerClassScript.CreateInstance<PlayerClassScript>();
+        playerClassScript = newPlayerClassScript;
+
+        //playerStats = Instantiate(playerStats);
         PlayerSpawned();
 
         DontDestroyOnLoad(gameObject);
@@ -60,17 +66,14 @@ public class PlayerController : MonoBehaviour
         {
             case (PlayerState.inGame):
                 Movement();
-                
-                if (gun.nextTimeToFire != 0)
-                {
-                    gun.nextTimeToFire = ReduceToZeroByTime(gun.nextTimeToFire);
-                }
+                playerClassScript.ClassUpdate();
                 break;
 
             case (PlayerState.inMenu):
                 break;
 
             case (PlayerState.idle):
+                playerClassScript.ClassUpdate();
                 break;
         }
 
@@ -85,7 +88,8 @@ public class PlayerController : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             //Sets the Vector3 to have a magnetude of 1 and then scales it to the time, with an adjustable speed function
-            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * moveSpeed[0];
+            // moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * moveSpeed[0];
+            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * playerStats.stat[StatType.speed];
 
             ourPlayerController.Move(moveDirection);
 
@@ -119,17 +123,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
             
-            if (gun.nextTimeToFire == 0)
+            if (playerClassScript.gun.nextTimeToFire == 0)
             {
-                gun.Fire(this);
+                playerClassScript.gun.Fire(this);
             }
         }
-    }
-
-    public float ReduceToZeroByTime(float i)
-    {
-        i = Mathf.Clamp(i - Time.deltaTime, 0, Mathf.Infinity);
-        return i;
     }
 
     public void PlayerSpawned()
@@ -138,9 +136,26 @@ public class PlayerController : MonoBehaviour
         ourPlayerController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         firePosition = GetComponentInChildren<SphereCollider>().gameObject;
+        
+        playerClassScript.ClassStartUp(this);
 
-        Gun newGun = Instantiate(gunObject);
-        gun = newGun;
+        playerStats = Instantiate(playerStats);
+        playerStats.SetStats();
+    }
+
+    public void ChangeHealth(int i)
+    {
+        playerStats.stat[StatType.health] = (int)MasterManager.ReduceToZero(playerStats.stat[StatType.health], i);
+        if (playerStats.stat[StatType.health] == 0)
+        {
+            CommitDie();
+        }
+    }
+
+    public void CommitDie()
+    {
+        //Destroy(gameObject);
+        Debug.Log("Dead");
     }
 
 
@@ -149,7 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            Debug.Log("a");
+            playerClassScript.genericAbility.Activate(this, Time.deltaTime);
         }
     }
 
@@ -157,7 +172,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            gun.Fire(this);
+            playerClassScript.genericAbility.Activate(this);
         }
     }
 

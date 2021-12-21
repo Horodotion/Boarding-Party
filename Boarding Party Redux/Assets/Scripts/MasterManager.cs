@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public enum Faction
 {
-    player,
-    enemy,
-    wall
+    Player,
+    Enemy,
+    Wall
 }
 
 public enum PlayerClass
@@ -56,5 +56,11 @@ public class MasterManager : MonoBehaviour
                         break;
                 }
             };
+    }
+
+    public static float ReduceToZero(float i, float reduction)
+    {
+        i = Mathf.Clamp(i - reduction, 0, Mathf.Infinity);
+        return i;
     }
 }
