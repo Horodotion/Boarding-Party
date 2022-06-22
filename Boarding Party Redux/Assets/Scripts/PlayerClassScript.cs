@@ -20,11 +20,11 @@ public class PlayerClassScript : ScriptableObject
         {StatType.health, 100}, 
         {StatType.damage, 0}
     };
+
     public Dictionary<StatusType, List<Status>> StatusLists = new Dictionary<StatusType, List<Status>>
     {
 
     };
-    //public List<Status> statusList;
 
     public void ClassStartUp(PlayerController ourPlayer)
     {
