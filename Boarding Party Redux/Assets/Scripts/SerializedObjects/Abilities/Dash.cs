@@ -6,32 +6,32 @@ using UnityEngine;
 public class Dash : Ability
 {
     public Vector3 movementVector;
-    public override void Activate(PlayerController player = null, float i = 0)
+    public override void Activate(float i = 0)
     {
         if (stacks > 0)
         {
             movementVector = new Vector3(player.moveAxis.x, 0, player.moveAxis.y).normalized * player.playerStats.stat[StatType.speed] * 2;
-            base.Activate(player, i);
+            base.Activate(i);
         }
     }
 
-    public override void ReduceCooldown(float i, PlayerController player = null)
+    public override void ReduceCooldown(float i)
     {
         switch (abilityState)
         {
             case (AbilityState.cooldown):
-                base.ReduceCooldown(i, null);
+                base.ReduceCooldown(i);
                 break;
             
             case (AbilityState.casting):
-                base.ReduceCooldown(i, null);
-                Casting(player);
+                base.ReduceCooldown(i);
+                Casting();
                 break;
         }
 
     }
 
-    public override void Casting(PlayerController player = null)
+    public override void Casting()
     {
         castintTime = Mathf.Clamp(castintTime - Time.deltaTime, 0, Mathf.Infinity);
 
@@ -39,11 +39,11 @@ public class Dash : Ability
 
         if (castintTime == 0)
         {
-            Deactivate(player);
+            Deactivate();
         }
     }
 
-    public override void Deactivate(PlayerController player = null)
+    public override void Deactivate()
     {
         player.playerState = PlayerState.inGame;
         abilityState = AbilityState.cooldown;

@@ -26,13 +26,16 @@ public abstract class Gun : ScriptableObject
         bulletScript.hostileFaction = hostileFaction;
         bulletScript.lifeSpan = projectileLifeSpan;
 
-        for (int i = 0; i < statusEffects.Count; i++)
+        if (statusEffects.Count != 0)
         {
-            Status newStatus = Instantiate(statusEffects[i]);
-            bulletScript.ourStatusEffects.Add(newStatus);
-            if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
+            for (int i = 0; i < statusEffects.Count; i++)
             {
-                newStatus.statusStrength += gunDamage + (int)player.playerStats.stat[StatType.damage];
+                Status newStatus = Instantiate(statusEffects[i]);
+                bulletScript.ourStatusEffects.Add(newStatus);
+                if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
+                {
+                    newStatus.statusStrength += gunDamage; // + (int)player.playerStats.stat[StatType.damage];
+                }
             }
         }
     }
@@ -43,13 +46,16 @@ public abstract class Gun : ScriptableObject
         bulletScript.hostileFaction = hostileFaction;
         bulletScript.lifeSpan = projectileLifeSpan;
 
-        for (int i = 0; i < statusEffects.Count; i++)
+        if (statusEffects.Count != 0)
         {
-            Status newStatus = Instantiate(statusEffects[i]);
-            bulletScript.ourStatusEffects.Add(newStatus);
-            if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
+            for (int i = 0; i < statusEffects.Count; i++)
             {
-                newStatus.statusStrength += gunDamage; //+ (int)player.playerStats.stat[StatType.damage];
+                Status newStatus = Instantiate(statusEffects[i]);
+                bulletScript.ourStatusEffects.Add(newStatus);
+                if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
+                {
+                    newStatus.statusStrength += gunDamage;
+                }
             }
         }
     }

@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
 {
     //Variables to reference other scripts or controls
     [HideInInspector] public PlayerState playerState;
-    public PlayerClassScript playerClassScript;
     [HideInInspector] public InputActionAsset playerInputs;
     public Gun gun;
     public Ability genericAbility;
+    public Ability movementAbility;
 
     //Variables for components on the player Object
     [HideInInspector] public CharacterController ourPlayerController;
@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
     {
         //Setting up a new instance of scripts to not run into errors with other players
         playerInputs = GetComponent<PlayerInput>().actions;
-        PlayerClassScript newPlayerClassScript = PlayerClassScript.CreateInstance<PlayerClassScript>();
-        playerClassScript = newPlayerClassScript;
 
         //playerStats = Instantiate(playerStats);
         PlayerSpawned();
@@ -66,14 +64,14 @@ public class PlayerController : MonoBehaviour
         {
             case (PlayerState.inGame):
                 Movement();
-                playerClassScript.ClassUpdate();
+                Cooldowns();
                 break;
 
             case (PlayerState.inMenu):
                 break;
 
             case (PlayerState.idle):
-                playerClassScript.ClassUpdate();
+                
                 break;
         }
 
@@ -123,10 +121,28 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
             
-            if (playerClassScript.gun.nextTimeToFire == 0)
+            if (gun.nextTimeToFire == 0)
             {
-                playerClassScript.gun.Fire(this);
+                gun.Fire(this);
             }
+        }
+    }
+
+    public void Cooldowns()
+    {
+        if (gun.nextTimeToFire != 0)
+        {
+            gun.nextTimeToFire = MasterManager.ReduceToZero(gun.nextTimeToFire, Time.deltaTime);
+        }
+
+        if (genericAbility != null)
+        {
+            genericAbility.ReduceCooldown(Time.deltaTime);
+        }
+
+        if (movementAbility != null)
+        {
+
         }
     }
 
@@ -136,11 +152,26 @@ public class PlayerController : MonoBehaviour
         ourPlayerController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         firePosition = GetComponentInChildren<SphereCollider>().gameObject;
-        
-        playerClassScript.ClassStartUp(this);
 
         playerStats = Instantiate(playerStats);
         playerStats.SetStats();
+
+        if (genericAbility != null)
+        {
+            genericAbility = InitializeAbility(genericAbility);
+        }
+
+        if (movementAbility != null)
+        {
+            movementAbility = InitializeAbility(movementAbility);
+        }
+    }
+
+    public Ability InitializeAbility(Ability ability)
+    {
+        Ability newAbility = Instantiate(ability);
+        newAbility.player = this;
+        return newAbility;
     }
 
     public void ChangeHealth(int i)
@@ -164,7 +195,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            playerClassScript.genericAbility.Activate(this, Time.deltaTime);
+            genericAbility.Activate(Time.deltaTime);
         }
     }
 
@@ -172,7 +203,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            playerClassScript.genericAbility.Activate(this);
+            genericAbility.Activate();
         }
     }
 

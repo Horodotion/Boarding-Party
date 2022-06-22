@@ -17,7 +17,6 @@ public class Bolt : Gun
         bullet.GetComponentInChildren<TrailRenderer>().colorGradient = gradient;
 
         AddStats(player, bulletScript);
-
         bulletScript.Launch();
     }
 }

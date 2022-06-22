@@ -11,6 +11,7 @@ public enum AbilityState
 public abstract class Ability : ScriptableObject
 {
     public AbilityState abilityState = AbilityState.cooldown;
+    public PlayerController player;
     public float cooldown;
     public float cooldownDuration;
     public float castingDuration;
@@ -19,7 +20,7 @@ public abstract class Ability : ScriptableObject
     public int stacksMax;
     public PlayerClass classSpecific = PlayerClass.basic;
     
-    public virtual void Activate(PlayerController player = null, float i = 0)
+    public virtual void Activate(float i = 0)
     {
         castintTime = castingDuration;
         player.playerState = PlayerState.idle;
@@ -32,7 +33,7 @@ public abstract class Ability : ScriptableObject
         }
     }
     
-    public virtual void Casting(PlayerController player = null)
+    public virtual void Casting()
     {
         castintTime = Mathf.Clamp(castintTime - Time.deltaTime, 0, Mathf.Infinity);
         if (castintTime == 0)
@@ -41,32 +42,32 @@ public abstract class Ability : ScriptableObject
         }
     }
 
-    public virtual void Deactivate(PlayerController player = null)
+    public virtual void Deactivate()
     {
 
     }
 
-    public virtual void ReduceCooldown(float i, PlayerController player = null)
+    public virtual void ReduceCooldown(float i)
     {
         if (stacks < stacksMax)
         {  
-            if (cooldown != 0)
+            if (cooldown > 0)
             {
                 cooldown = MasterManager.ReduceToZero(cooldown, i);
             }
-            if (cooldown == 0)
+            if (cooldown <= 0)
             {
                 stacks++;
             }
         }
     }
 
-    public virtual void Fire(PlayerController player = null)
+    public virtual void Fire()
     {
 
     }
 
-    public virtual void AddStats(PlayerController player = null, ProjectileScript bulletScript = null)
+    public virtual void AddStats(ProjectileScript bulletScript = null)
     {
 
     }

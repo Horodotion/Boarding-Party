@@ -6,12 +6,12 @@ using UnityEngine;
 public class ExplosiveAbility : Ability
 {
     public Gun explosive;
-    public override void Activate(PlayerController player = null, float i = 0)
+    public override void Activate(float i = 0)
     {
         if (stacks > 0)
         {
             explosive.Fire();
-            base.Activate(player, i);
+            base.Activate(i);
         }
     }
 }

@@ -14,7 +14,6 @@ public class Rifle : Gun
 
         GameObject bullet = Instantiate(gunProjectilePrefab, player.firePosition.transform.position, player.gameObject.transform.rotation);
         ProjectileScript bulletScript = bullet.GetComponent<ProjectileScript>();
-
         bullet.GetComponentInChildren<Renderer>().material = bullet_m;
 
         AddStats(player, bulletScript);

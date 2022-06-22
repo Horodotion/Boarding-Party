@@ -14,7 +14,6 @@ public class Grenade : Gun
         ProjectileScript bulletScript = bullet.GetComponent<ProjectileScript>();
 
         AddStats(player, bulletScript);
-
         bulletScript.Launch();
     }
 }

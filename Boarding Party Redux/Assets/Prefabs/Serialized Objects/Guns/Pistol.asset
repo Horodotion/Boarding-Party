@@ -20,8 +20,7 @@ MonoBehaviour:
   rateOfFire: 2
   nextTimeToFire: 0
   hostileFaction: 1
-  statusEffects:
-  - {fileID: 11400000, guid: fd51be7fbbc76674b91945282f872e6c, type: 2}
+  statusEffects: []
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 0}
