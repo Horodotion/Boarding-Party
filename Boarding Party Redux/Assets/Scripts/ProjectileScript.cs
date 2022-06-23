@@ -14,6 +14,7 @@ public enum ProjectileType
 public class ProjectileScript : MonoBehaviour
 {
     public Faction hostileFaction;
+    public int damage;
     public List<Status> ourStatusEffects;
     public int projectileSpeed;
     [HideInInspector] public Rigidbody rb;
@@ -50,21 +51,30 @@ public class ProjectileScript : MonoBehaviour
 
     public void OnHitEffects(GameObject hit)
     {
-
         if (hostileFaction == Faction.Enemy)
         {
-            for (int i = 0; i < ourStatusEffects.Count; i++)
+            hit.GetComponent<EnemyController>().ChangeHealth(-damage);
+
+            if (ourStatusEffects.Count != 0)
             {
-                Status newStatus = Instantiate(ourStatusEffects[i]);
-                newStatus.ApplyStatusEffectToEnemy(hit.GetComponent<EnemyController>());
+                for (int i = 0; i < ourStatusEffects.Count; i++)
+                {
+                    Status newStatus = Instantiate(ourStatusEffects[i]);
+                    newStatus.ApplyStatusEffectToEnemy(hit.GetComponent<EnemyController>());
+                }
             }
         }
         else if (hostileFaction == Faction.Player)
         {
-            for (int i = 0; i < ourStatusEffects.Count; i++)
+            hit.GetComponent<PlayerController>().ChangeHealth(-damage);
+
+            if (ourStatusEffects.Count != 0)
             {
-                Status newStatus = Instantiate(ourStatusEffects[i]);
-                newStatus.ApplyStatusEffectToPlayer(hit.GetComponent<PlayerController>());
+                for (int i = 0; i < ourStatusEffects.Count; i++)
+                {
+                    Status newStatus = Instantiate(ourStatusEffects[i]);
+                    newStatus.ApplyStatusEffectToPlayer(hit.GetComponent<PlayerController>());
+                }
             }
         }
     }

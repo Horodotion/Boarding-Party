@@ -15,7 +15,7 @@ MonoBehaviour:
   baseStatList:
     statValues:
     - stat: 0
-      value: 100
+      value: 10
     - stat: 1
       value: 10
     - stat: 3

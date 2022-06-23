@@ -25,6 +25,7 @@ public abstract class Gun : ScriptableObject
         bulletScript.projectileSpeed = gunProjectileSpeed;
         bulletScript.hostileFaction = hostileFaction;
         bulletScript.lifeSpan = projectileLifeSpan;
+        bulletScript.damage = gunDamage;
 
         if (statusEffects.Count != 0)
         {
@@ -45,6 +46,7 @@ public abstract class Gun : ScriptableObject
         bulletScript.projectileSpeed = gunProjectileSpeed;
         bulletScript.hostileFaction = hostileFaction;
         bulletScript.lifeSpan = projectileLifeSpan;
+        bulletScript.damage = gunDamage;
 
         if (statusEffects.Count != 0)
         {
