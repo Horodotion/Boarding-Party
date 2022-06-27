@@ -18,7 +18,9 @@ public class EnemyController : MonoBehaviour
     [HideInInspector] public NavMeshAgent navAgent;
     public GameObject targettedPlayer;
     public float lastDetectedPlayer;
-     public float lastDetectedPlayerDuration = 5f;
+    public float lastDetectedPlayerDuration = 5f;
+
+    public bool dead;
 
     void Awake()
     {

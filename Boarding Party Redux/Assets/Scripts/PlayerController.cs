@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     public void CommitDie()
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
         Debug.Log("Dead");
     }
 
