@@ -20,6 +20,8 @@ MonoBehaviour:
       value: 10
     - stat: 3
       value: 5
+    - stat: 4
+      value: 10
   maxStatList:
     statValues:
     - stat: 0

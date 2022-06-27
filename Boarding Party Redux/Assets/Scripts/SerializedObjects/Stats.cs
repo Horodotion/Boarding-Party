@@ -8,7 +8,7 @@ public enum StatType
     damage,
     damageMultiplier,
     speed,
-    
+    detectionRange
 }
 
 [System.Serializable] public class StatList

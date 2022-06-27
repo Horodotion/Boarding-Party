@@ -8,6 +8,19 @@ public class Mine : EnemyController
     public float explosiveRange;
     // public float damage;
 
+    public override void Aggro()
+    {
+        if (!DetectPlayers() || targettedPlayer == null)
+        {
+            currentState = EnemyState.searching;
+            lastDetectedPlayer = lastDetectedPlayerDuration;
+        }
+        else
+        {
+            navAgent.SetDestination(targettedPlayer.transform.position);
+        }
+    }
+
     public override void CommitDie()
     {
         Destroy(gameObject);

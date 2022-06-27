@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 125921822749534381, guid: f15deb473bfe3724e8f574bf1a00ed59, type: 3}
+      objectReference: {fileID: 3011533529907124875, guid: dd71a5cc09a6aef44999afb24555bd61, type: 3}
     - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_NotificationBehavior
       value: 0

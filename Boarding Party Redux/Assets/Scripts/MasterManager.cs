@@ -58,9 +58,9 @@ public class MasterManager : MonoBehaviour
             };
     }
 
-    public static float ReduceToZero(float i, float reduction)
+    public static float ReduceToZero(float numberToReduce, float reduction)
     {
-        i = Mathf.Clamp(i - reduction, 0, Mathf.Infinity);
-        return i;
+        numberToReduce = Mathf.Clamp(numberToReduce - reduction, 0, Mathf.Infinity);
+        return numberToReduce;
     }
 }
