@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum Factions
+public enum Faction
 {
-    player,
-    enemy,
-    wall
+    Player,
+    Enemy,
+    Wall
 }
 
 public enum PlayerClass
@@ -23,13 +23,15 @@ public enum PlayerClass
 public class MasterManager : MonoBehaviour
 {
     public static MasterManager master;
+    public static List<GameObject> playerList;
+
 
     void Awake()
     {
         if (master != this && master == null)
         {
             master = this;
-            // allGamepads = Gamepad.all;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -54,5 +56,11 @@ public class MasterManager : MonoBehaviour
                         break;
                 }
             };
+    }
+
+    public static float ReduceToZero(float numberToReduce, float reduction)
+    {
+        numberToReduce = Mathf.Clamp(numberToReduce - reduction, 0, Mathf.Infinity);
+        return numberToReduce;
     }
 }

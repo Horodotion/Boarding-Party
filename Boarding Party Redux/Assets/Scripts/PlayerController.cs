@@ -3,81 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public enum PlayerState
+{
+    inGame,
+    inMenu,
+    idle
+}
+
 public class PlayerController : MonoBehaviour
 {
-    //Variables for the new input system
-    //Listed out as Input actions to make further code more readable
-    //private Gamepad gamepad;
-    private PlayerControlScheme controls;
-    private InputAction primaryButton;
-    private InputAction secondaryButton;
-    private InputAction tertiaryButton;
-    private InputAction utilityButton;
-    private InputAction startButton;
-    private InputAction selectButton;
-    private InputAction movementAxis;
-    private InputAction lookAxis;
+    //Variables to reference other scripts or controls
+    [HideInInspector] public PlayerState playerState;
+    [HideInInspector] public InputActionAsset playerInputs;
+    public Gun gun;
+    public Ability genericAbility;
+    public Ability movementAbility;
 
-    //Variables for the player statistics
-    public PlayerStats playerStats;
-
-    //Variables for the player Controller
-    private CharacterController ourPlayerController;
-
+    //Variables for components on the player Object
+    [HideInInspector] public CharacterController ourPlayerController;
+    private Animator animator;
+    [HideInInspector] public GameObject firePosition;
 
     //Variables for the player animations
-    private Animator animator;
     private string animUpDown = "UpDown";
     private string animLeftRight = "LeftRight";
 
+    //Variables for movement
+    [HideInInspector] public Vector2 moveAxis;
+    [HideInInspector] public Vector2 lookAxis;
+
+
+    //The plain Stat (the first number) refers to the stat that will be referenced by the player
+    //Base (The second number) refers to the base stat to return to upon any resetting.
+    //Max refers to the amount to maximum that a stat can be
+    public Stats playerStats;
+
+
+    //public Dictionary<Stats, int[]> playerStats = new Dictionary<Stats, int[]>();
+    public PlayerClass ourClass = PlayerClass.basic;
 
     void Awake()
     {
         //Setting up a new instance of scripts to not run into errors with other players
-        controls = new PlayerControlScheme();
-        playerStats = new PlayerStats();
+        playerInputs = GetComponent<PlayerInput>().actions;
 
-        //Setting up the naming convention of the buttons to be more readable throughout scripts
-        primaryButton = controls.PlayerControls.primaryButton;
-        secondaryButton = controls.PlayerControls.secondaryButton;
-        tertiaryButton = controls.PlayerControls.tertiaryButton;
-        utilityButton = controls.PlayerControls.utilityButton;
-        startButton = controls.PlayerControls.startButton;
-        selectButton = controls.PlayerControls.selectButton;
-        movementAxis = controls.PlayerControls.movementAxis;
-        lookAxis = controls.PlayerControls.lookAxis;
+        //playerStats = Instantiate(playerStats);
+        PlayerSpawned();
 
-        //Getting a reference to the pieces of the game object and children
-        ourPlayerController = GetComponent<CharacterController>();
-        animator = GetComponentInChildren<Animator>();
+        DontDestroyOnLoad(gameObject);
     }
 
-    void OnEnable()
+    void Enable()
     {
-        //Enabling the basic controls for the player
-        controls.PlayerControls.Enable();
-
-        //Setting up the functions that will be called when using a button
-        //Axises don't need to be called this way since they are readonly
-        primaryButton.performed += PrimaryButton;
-        secondaryButton.performed += SecondaryButton;
-        tertiaryButton.performed += TertiaryButton;
-        utilityButton.performed += UtilityButton;
-        startButton.performed += StartButton;
-        selectButton.performed += SelectButton;
 
     }
 
     void FixedUpdate()
     {
-        Vector3 moveDirection = new Vector3(movementAxis.ReadValue<Vector2>().x, 0, movementAxis.ReadValue<Vector2>().y);
-        Vector3 lookDirection = new Vector3(lookAxis.ReadValue<Vector2>().x, 0, lookAxis.ReadValue<Vector2>().y);
+        switch (playerState)
+        {
+            case (PlayerState.inGame):
+                Movement();
+                Cooldowns();
+                break;
+
+            case (PlayerState.inMenu):
+                break;
+
+            case (PlayerState.idle):
+                Cooldowns();
+                break;
+        }
+
+    }
+
+    public void Movement()
+    {
+        Vector3 moveDirection = new Vector3(moveAxis.x, 0, moveAxis.y);
+        Vector3 lookDirection = new Vector3(lookAxis.x, 0, lookAxis.y);
 
         //This part controls the player's movement and 
         if (moveDirection != Vector3.zero)
         {
             //Sets the Vector3 to have a magnetude of 1 and then scales it to the time, with an adjustable speed function
-            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * playerStats.moveSpeed;
+            // moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * moveSpeed[0];
+            moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * playerStats.stat[StatType.speed];
 
             ourPlayerController.Move(moveDirection);
 
@@ -110,41 +120,118 @@ public class PlayerController : MonoBehaviour
         if (lookDirection != Vector3.zero)
         {
             transform.rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+            
+            if (gun.nextTimeToFire == 0)
+            {
+                gun.Fire(this);
+            }
+        }
+    }
+
+    public void Cooldowns()
+    {
+        if (gun.nextTimeToFire != 0)
+        {
+            gun.nextTimeToFire = MasterManager.ReduceToZero(gun.nextTimeToFire, Time.deltaTime);
         }
 
+        if (genericAbility != null)
+        {
+            genericAbility.ReduceCooldown(Time.deltaTime);
+        }
+
+        if (movementAbility != null)
+        {
+            genericAbility.ReduceCooldown(Time.deltaTime);
+        }
     }
 
-    public void PrimaryButton(InputAction.CallbackContext ctx)
+    public void PlayerSpawned()
     {
-        Debug.Log("a");
+        //Getting a reference to the pieces of the game object and children
+        ourPlayerController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
+        firePosition = GetComponentInChildren<SphereCollider>().gameObject;
+
+        playerStats = Instantiate(playerStats);
+        playerStats.SetStats();
+
+        if (genericAbility != null)
+        {
+            genericAbility = InitializeAbility(genericAbility);
+        }
+
+        if (movementAbility != null)
+        {
+            movementAbility = InitializeAbility(movementAbility);
+        }
     }
 
-    public void SecondaryButton(InputAction.CallbackContext ctx)
+    public Ability InitializeAbility(Ability ability)
     {
-
-        Debug.Log(Gamepad.all);
+        Ability newAbility = Instantiate(ability);
+        newAbility.player = this;
+        return newAbility;
     }
 
-    public void TertiaryButton(InputAction.CallbackContext ctx)
+    public void ChangeHealth(int i)
+    {
+        playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
+
+        Debug.Log(playerStats.stat[StatType.health] + " health remaining");
+        if (playerStats.stat[StatType.health] <= 0)
+        {
+            CommitDie();
+        }
+    }
+
+    public void CommitDie()
+    {
+        Destroy(gameObject);
+        Debug.Log("Dead");
+    }
+
+
+
+    public void OnPrimaryButton(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            genericAbility.Activate(Time.deltaTime);
+        }
+    }
+
+    public void OnSecondaryButton(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            genericAbility.Activate();
+        }
+    }
+
+    public void OnTertiaryButton(InputAction.CallbackContext ctx)
     {     
 
     }
 
-    public void UtilityButton(InputAction.CallbackContext ctx)
+    public void OnUtilityButton(InputAction.CallbackContext ctx)
     {
 
     }
 
-    public void StartButton(InputAction.CallbackContext ctx)
+    public void OnStartButton(InputAction.CallbackContext ctx)
     {
         Debug.Log("start");
     }
 
-    public void SelectButton(InputAction.CallbackContext ctx)
+    public void OnSelectButton(InputAction.CallbackContext ctx)
     {
-        Debug.Log("select");
-        playerStats.ChangeClass(PlayerClass.specops);
+        Debug.Log("spawned");
+        PlayerSpawned();
     }
+
+    public void OnMovementAxis(InputAction.CallbackContext ctx) => moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+    public void OnLookAxis(InputAction.CallbackContext ctx) => lookAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
 
     void OnPlayerJoined()
     {
