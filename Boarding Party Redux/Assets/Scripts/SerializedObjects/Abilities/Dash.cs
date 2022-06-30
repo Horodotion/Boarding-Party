@@ -28,7 +28,6 @@ public class Dash : Ability
                 Casting();
                 break;
         }
-
     }
 
     public override void Casting()

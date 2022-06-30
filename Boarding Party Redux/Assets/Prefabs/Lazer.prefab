@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostileFaction: 0
-  ourStatusEffects: []
   damage: 0
-  projectileSpeed: 0
+  ourStatusEffects: []
+  projectileSpeed: 30
   rb: {fileID: 0}
-  lifeSpan: 0
+  lifeSpan: 5

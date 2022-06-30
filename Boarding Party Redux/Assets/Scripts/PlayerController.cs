@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case (PlayerState.idle):
-                
+                Cooldowns();
                 break;
         }
 
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
 
         if (movementAbility != null)
         {
-
+            genericAbility.ReduceCooldown(Time.deltaTime);
         }
     }
 
@@ -176,8 +176,10 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeHealth(int i)
     {
-        playerStats.stat[StatType.health] = (int)MasterManager.ReduceToZero(playerStats.stat[StatType.health], i);
-        if (playerStats.stat[StatType.health] == 0)
+        playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
+
+        Debug.Log(playerStats.stat[StatType.health] + " health remaining");
+        if (playerStats.stat[StatType.health] <= 0)
         {
             CommitDie();
         }

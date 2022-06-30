@@ -16,6 +16,10 @@ public class Mine : EnemyController
             currentState = EnemyState.searching;
             lastDetectedPlayer = lastDetectedPlayerDuration;
         }
+        else if (Vector3.Distance(transform.position, targettedPlayer.transform.position) <= explosionRadius * 0.66)
+        {
+            CommitDie();
+        }
         else
         {
             navAgent.SetDestination(targettedPlayer.transform.position);
@@ -38,9 +42,6 @@ public class Mine : EnemyController
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var hC in hitColliders)
         {
-            // var damage = baseDamageDealt - Vector3.Distance(transform.position, hC.transform.position);
-            // damage = Mathf.Clamp(baseDamageDealt, 0, damage);
-
             // INSERT HERE: Function or however damage is assigned, pass each object returned in hitColliders the damage variable above
             if (hC.gameObject.tag == "Player" && hC.GetComponent<PlayerController>() != null)
             {
@@ -57,6 +58,5 @@ public class Mine : EnemyController
                 hC.GetComponent<Rigidbody>().AddExplosionForce(damage * 5, transform.position, explosionRadius, 1f);
             }
         }
-        // Destroy(this.gameObject);
     }
 }

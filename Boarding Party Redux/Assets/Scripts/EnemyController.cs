@@ -19,14 +19,16 @@ public class EnemyController : MonoBehaviour
     public GameObject targettedPlayer;
     public float lastDetectedPlayer;
     public float lastDetectedPlayerDuration = 5f;
-
+    public Faction hostileFaction = Faction.Player;
     public bool dead;
 
-    void Awake()
+    public virtual void Awake()
     {
         enemyStats = Instantiate(enemyStats);
         enemyStats.SetStats();
+
         navAgent = GetComponent<NavMeshAgent>();
+        navAgent.speed = enemyStats.stat[StatType.speed];
     }
 
     public virtual void FixedUpdate()
@@ -142,8 +144,8 @@ public class EnemyController : MonoBehaviour
 
     public virtual void ChangeHealth(int i)
     {
-        enemyStats.stat[StatType.health] = (int)MasterManager.ReduceToZero(enemyStats.stat[StatType.health], i);
-        if (enemyStats.stat[StatType.health] >= 0)
+        enemyStats.stat[StatType.health] = Mathf.Clamp(enemyStats.stat[StatType.health] + i, 0, Mathf.Infinity);
+        if (enemyStats.stat[StatType.health] <= 0)
         {
             CommitDie();
         }
@@ -153,5 +155,26 @@ public class EnemyController : MonoBehaviour
     {
         Destroy(gameObject);
         Debug.Log("Dead");
+    }
+
+    public virtual void AddStats(ProjectileScript bulletScript = null)
+    {
+        // bulletScript.projectileSpeed = gunProjectileSpeed;
+        bulletScript.hostileFaction = hostileFaction;
+        // bulletScript.lifeSpan = projectileLifeSpan;
+        bulletScript.damage = (int)enemyStats.stat[StatType.damage];
+
+        // if (statusEffects.Count != 0)
+        // {
+        //     for (int i = 0; i < statusEffects.Count; i++)
+        //     {
+        //         Status newStatus = Instantiate(statusEffects[i]);
+        //         bulletScript.ourStatusEffects.Add(newStatus);
+        //         if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
+        //         {
+        //             newStatus.statusStrength += gunDamage;
+        //         }
+        //     }
+        // }
     }
 }
