@@ -27,8 +27,11 @@ public class EnemyController : MonoBehaviour
         enemyStats = Instantiate(enemyStats);
         enemyStats.SetStats();
 
-        navAgent = GetComponent<NavMeshAgent>();
-        navAgent.speed = enemyStats.stat[StatType.speed];
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            navAgent = GetComponent<NavMeshAgent>();
+            navAgent.speed = enemyStats.stat[StatType.speed];
+        }
     }
 
     public virtual void FixedUpdate()
@@ -86,7 +89,10 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            navAgent.SetDestination(targettedPlayer.transform.position);
+            if (GetComponent<NavMeshAgent>() != null)
+            {
+                navAgent.SetDestination(targettedPlayer.transform.position);
+            }
         }
     }
 

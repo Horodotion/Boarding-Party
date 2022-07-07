@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : EnemyController
+public class Turret : EnemyController
 {
+    public Transform turretHead;
+    public float turretRotationSpeed;
     public GameObject projectilePrefab;
     public Gradient colorGradient;
-    public List<Transform> firePositions;
-    public float firingRange;
+    [HideInInspector] public List<Transform> firePositions;
     public float firingSpeed;
     public float nextTimeToFire;
     [HideInInspector] public int currentFiringPosition = 0;
@@ -49,17 +50,17 @@ public class Shooter : EnemyController
             currentState = EnemyState.searching;
             lastDetectedPlayer = lastDetectedPlayerDuration;
         }
-        else if (Vector3.Distance(transform.position, targettedPlayer.transform.position) <= firingRange && nextTimeToFire <= 0)
+        else if (nextTimeToFire <= 0)
         {
             Shoot();
         }
         else
         {
             nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
-            if (GetComponent<UnityEngine.AI.NavMeshAgent>() != null)
-            {
-                navAgent.SetDestination(targettedPlayer.transform.position);
-            }
+            
+            Vector3 relativePlayerPosition = new Vector3(targettedPlayer.transform.position.x, turretHead.position.y, targettedPlayer.transform.position.z);
+            Vector3 newRotation = Vector3.RotateTowards(turretHead.forward, relativePlayerPosition - turretHead.position, turretRotationSpeed * Time.deltaTime, 0f);
+            turretHead.rotation = Quaternion.LookRotation(newRotation);
         }
     }
 
