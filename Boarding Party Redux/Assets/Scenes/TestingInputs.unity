@@ -200,13 +200,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 670075974}
     m_Modifications:
-    - target: {fileID: 2255097229195043162, guid: 09b6ba71a7dd3e6438668de81660c0eb, type: 3}
-      propertyPath: firingSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 9138541430823264288, guid: 09b6ba71a7dd3e6438668de81660c0eb, type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138541430823264288, guid: 09b6ba71a7dd3e6438668de81660c0eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9138541430823264292, guid: 09b6ba71a7dd3e6438668de81660c0eb, type: 3}
       propertyPath: m_RootOrder
@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.y
@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalRotation.w
@@ -316,15 +316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262950, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: damage
-      value: 100000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: explosionRadius
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: secondsUntilParticlesAreDestroyed
@@ -479,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.y
@@ -523,11 +523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262950, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: damage
-      value: 100000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: explosionRadius
@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.y
@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalRotation.w
@@ -601,15 +601,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262950, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: damage
-      value: 100000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: explosionRadius
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: secondsUntilParticlesAreDestroyed
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.y
@@ -796,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262946, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_LocalRotation.w
@@ -832,15 +832,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114368244097262950, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: damage
-      value: 100000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: explosionRadius
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3017995475970486059, guid: e9c31b7e25f2cbd43a29e9c840002737, type: 3}
       propertyPath: secondsUntilParticlesAreDestroyed
@@ -912,6 +912,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_Name
       value: MasterManager

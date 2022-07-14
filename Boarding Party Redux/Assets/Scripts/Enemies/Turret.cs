@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Turret : EnemyController
 {
+    [Header("Turret Specific variables")]
     public Transform turretHead;
     public float turretRotationSpeed;
+    private string activateAnim = "Activate";
+
+    [Header("Projectile Variables")]
     public GameObject projectilePrefab;
     public Gradient colorGradient;
     [HideInInspector] public List<Transform> firePositions;
-    public float firingSpeed;
-    public float nextTimeToFire;
+    // public float firingSpeed;
+    [HideInInspector] public float nextTimeToFire;
     [HideInInspector] public int currentFiringPosition = 0;
 
     public override void Awake()
@@ -29,17 +33,24 @@ public class Turret : EnemyController
 
         if (nextTimeToFire > 0)
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
+        }
+        if (enemyAnim != null)
+        {
+            
         }
     }
 
     public override void Searching()
     {
-        base.Searching();
+        if (DetectPlayers())
+        {
+            currentState = EnemyState.aggro;
+        }
 
         if (nextTimeToFire > 0)
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
         }
     }
 
@@ -56,7 +67,7 @@ public class Turret : EnemyController
         }
         else
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
             
             Vector3 relativePlayerPosition = new Vector3(targettedPlayer.transform.position.x, turretHead.position.y, targettedPlayer.transform.position.z);
             Vector3 newRotation = Vector3.RotateTowards(turretHead.forward, relativePlayerPosition - turretHead.position, turretRotationSpeed * Time.deltaTime, 0f);
@@ -68,7 +79,7 @@ public class Turret : EnemyController
     {
         if (firePositions[currentFiringPosition] != null)
         {
-            nextTimeToFire = firingSpeed;
+            nextTimeToFire = enemyStats.stat[StatType.firingSpeed];
 
             Transform firePos = firePositions[currentFiringPosition];
             GameObject newProjectile = Instantiate(projectilePrefab, firePos.position, firePos.rotation);

@@ -11,7 +11,8 @@
                     "id": "b30e47cb-b6b7-45ef-9f24-3ca57caaf267",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "secondaryButton",
@@ -19,7 +20,8 @@
                     "id": "5caf8e34-d263-482c-bbb0-a7092d0abd35",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "tertiaryButton",
@@ -27,7 +29,8 @@
                     "id": "626d1c68-e3e0-46a5-ab4f-703fe7ea2368",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "utilityButton",
@@ -35,7 +38,8 @@
                     "id": "70d5d00f-302e-499c-a2c7-e7d12ae23992",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "movementAxis",
@@ -43,7 +47,8 @@
                     "id": "d786c7b4-b325-4fc6-be87-f5978d70229c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "lookAxis",
@@ -51,7 +56,8 @@
                     "id": "278de513-46b7-417c-8146-a581f8ab393c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "startButton",
@@ -59,7 +65,8 @@
                     "id": "23a9ec10-a774-4d1c-95c8-d6058401157d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "selectButton",
@@ -67,7 +74,17 @@
                     "id": "d8af0ca3-c31f-4e7a-b82e-bf89f2c4a7c8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AnyAction",
+                    "type": "Button",
+                    "id": "19a7d146-c7bb-44f0-8a1c-b6f3c1fb24d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -332,6 +349,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "primaryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2515cea5-b9ab-4ab6-bc2e-e2ec4e19416c",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "AnyAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

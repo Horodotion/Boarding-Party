@@ -145,6 +145,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfef14209b96a24e9dd76c733d33abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaterials:
+  - {fileID: 2100000, guid: 052942d5e3e14084cb2a2558983cc075, type: 2}
+  - {fileID: 2100000, guid: 2dc1618248fc9d34286c49deab882be4, type: 2}
+  - {fileID: 2100000, guid: 5143fe55fd6395145a53ea1a71a8bc65, type: 2}
+  - {fileID: 2100000, guid: 0ceb13e817f7d5d4badc90d6cd724d99, type: 2}
+  playerAuras:
+  - {fileID: 21300000, guid: e8e13f191ad3ea6468229c1d1df26df7, type: 3}
+  - {fileID: 21300000, guid: d2dd188f4dbded44988b977c48858f79, type: 3}
+  - {fileID: 21300000, guid: c1ef4eec6626d2b4a85ba3fad839db80, type: 3}
+  - {fileID: 21300000, guid: 75fd27e14a6996a46a3c04c81bf704d0, type: 3}
 --- !u!114 &7978678786326247697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +317,10 @@ PrefabInstance:
     - target: {fileID: 7321144019452017710, guid: 9690c10c695a05f45881ef94491dbcb7, type: 3}
       propertyPath: m_Name
       value: DamageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321144019452017710, guid: 9690c10c695a05f45881ef94491dbcb7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9690c10c695a05f45881ef94491dbcb7, type: 3}

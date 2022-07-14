@@ -1388,6 +1388,6 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 3
   firePositions: []
-  firingSpeed: 0.1
+  firingSpeed: 0.2
   nextTimeToFire: 0
   currentFiringPosition: 0

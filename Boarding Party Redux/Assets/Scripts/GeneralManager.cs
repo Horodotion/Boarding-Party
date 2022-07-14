@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public enum Faction
 {
@@ -20,17 +21,23 @@ public enum PlayerClass
     basic
 }
 
-public class MasterManager : MonoBehaviour
+public class GeneralManager : MonoBehaviour
 {
-    public static MasterManager master;
-    public static List<GameObject> playerList;
+    public static GeneralManager manager;
+    public static PlayerController[] playerList = new PlayerController[4];
 
+    [Header("Game Score")]
+    public int score;
+
+    [Header("Player Prefab Content")]
+    public Material[] playerMaterials;
+    public Sprite[] playerAuras;
 
     void Awake()
     {
-        if (master != this && master == null)
+        if (manager != this && manager == null)
         {
-            master = this;
+            manager = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -56,6 +63,12 @@ public class MasterManager : MonoBehaviour
                         break;
                 }
             };
+    }
+
+    public static float ReduceToZeroByTime(float numberToReduce)
+    {
+        numberToReduce = Mathf.Clamp(numberToReduce - Time.deltaTime, 0, Mathf.Infinity);
+        return numberToReduce;
     }
 
     public static float ReduceToZero(float numberToReduce, float reduction)

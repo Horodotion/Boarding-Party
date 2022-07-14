@@ -22,5 +22,7 @@ MonoBehaviour:
       value: 0
     - stat: 4
       value: 20
+    - stat: 5
+      value: 0.3
   maxStatList:
     statValues: []

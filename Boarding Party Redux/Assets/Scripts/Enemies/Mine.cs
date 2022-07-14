@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mine : EnemyController
 {
+    [Header("Explosion Variables")]
     public int damage;
     public float explosionRadius;
     public GameObject destroyEffectPrefab;
@@ -45,7 +46,7 @@ public class Mine : EnemyController
             // INSERT HERE: Function or however damage is assigned, pass each object returned in hitColliders the damage variable above
             if (hC.gameObject.tag == "Player" && hC.GetComponent<PlayerController>() != null)
             {
-                hC.GetComponent<PlayerController>().ChangeHealth(damage);
+                hC.GetComponent<PlayerController>().ChangeHealth(-damage);
             }
             if (hC.gameObject.tag == "Enemy" && hC.GetComponent<EnemyController>() != null && !hC.GetComponent<EnemyController>().dead)
             {

@@ -13,14 +13,18 @@ public enum EnemyState
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Stats")]
     public Stats enemyStats;
     public EnemyState currentState;
-    [HideInInspector] public NavMeshAgent navAgent;
-    public GameObject targettedPlayer;
-    public float lastDetectedPlayer;
-    public float lastDetectedPlayerDuration = 5f;
-    public Faction hostileFaction = Faction.Player;
     public bool dead;
+    public int score;
+
+    [HideInInspector] public NavMeshAgent navAgent;
+    [HideInInspector] public GameObject targettedPlayer;
+    [HideInInspector] public float lastDetectedPlayer;
+    [HideInInspector] public float lastDetectedPlayerDuration = 5f;
+    [HideInInspector] public Faction hostileFaction = Faction.Player;
+    [HideInInspector] public Animator enemyAnim;
 
     public virtual void Awake()
     {
@@ -72,7 +76,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            lastDetectedPlayer = MasterManager.ReduceToZero(lastDetectedPlayer, Time.deltaTime);
+            lastDetectedPlayer = GeneralManager.ReduceToZeroByTime(lastDetectedPlayer);
             if (lastDetectedPlayer <= 0f)
             {
                 currentState = EnemyState.idle;
@@ -109,7 +113,7 @@ public class EnemyController : MonoBehaviour
                 RaycastHit raycastHit;
                 Physics.Raycast(transform.position, hit.gameObject.transform.position - transform.position, out raycastHit);
 
-                if (raycastHit.collider.gameObject == hit.gameObject)
+                if (hit.gameObject != null && raycastHit.collider != null && raycastHit.collider.gameObject == hit.gameObject)
                 {
                     players.Add(hit.gameObject);
                 }
@@ -159,6 +163,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void CommitDie()
     {
+        GeneralManager.manager.score += score;
         Destroy(gameObject);
         Debug.Log("Dead");
     }

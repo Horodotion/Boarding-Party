@@ -2,27 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public enum PlayerState
 {
     inGame,
     inMenu,
+    dead,
     idle
 }
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Stats and Abilities")]
+
+    //The plain Stat (the first number) refers to the stat that will be referenced by the player
+    //Base (The second number) refers to the base stat to return to upon any resetting.
+    //Max refers to the amount to maximum that a stat can be
+    public Stats playerStats;
+
     //Variables to reference other scripts or controls
+    [HideInInspector]public int playerNumber, playerDisplayNumber;
     [HideInInspector] public PlayerState playerState;
     [HideInInspector] public InputActionAsset playerInputs;
     public Gun gun;
     public Ability genericAbility;
     public Ability movementAbility;
 
+    [Header("Model and Art Objects")]
     //Variables for components on the player Object
+    public GameObject playerModel;
     [HideInInspector] public CharacterController ourPlayerController;
-    private Animator animator;
+    [HideInInspector] public Animator animator;
     [HideInInspector] public GameObject firePosition;
+    [HideInInspector] public Collider playerCollider;
 
     //Variables for the player animations
     private string animUpDown = "UpDown";
@@ -31,16 +44,7 @@ public class PlayerController : MonoBehaviour
     //Variables for movement
     [HideInInspector] public Vector2 moveAxis;
     [HideInInspector] public Vector2 lookAxis;
-
-
-    //The plain Stat (the first number) refers to the stat that will be referenced by the player
-    //Base (The second number) refers to the base stat to return to upon any resetting.
-    //Max refers to the amount to maximum that a stat can be
-    public Stats playerStats;
-
-
-    //public Dictionary<Stats, int[]> playerStats = new Dictionary<Stats, int[]>();
-    public PlayerClass ourClass = PlayerClass.basic;
+    [HideInInspector] public bool dead;
 
     void Awake()
     {
@@ -51,6 +55,19 @@ public class PlayerController : MonoBehaviour
         PlayerSpawned();
 
         DontDestroyOnLoad(gameObject);
+
+        for (int i = 0; i < GeneralManager.playerList.Length; i++)
+        {
+            if (GeneralManager.playerList[i] == null)
+            {
+                GeneralManager.playerList[i] = this;
+                playerNumber = i;
+                playerDisplayNumber = i+1;
+                break;
+            }
+        }
+
+
     }
 
     void Enable()
@@ -72,6 +89,9 @@ public class PlayerController : MonoBehaviour
 
             case (PlayerState.idle):
                 Cooldowns();
+                break;
+
+            case (PlayerState.dead):
                 break;
         }
 
@@ -132,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gun.nextTimeToFire != 0)
         {
-            gun.nextTimeToFire = MasterManager.ReduceToZero(gun.nextTimeToFire, Time.deltaTime);
+            gun.nextTimeToFire = GeneralManager.ReduceToZeroByTime(gun.nextTimeToFire);
         }
 
         if (genericAbility != null)
@@ -155,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
         playerStats = Instantiate(playerStats);
         playerStats.SetStats();
+        dead = false;
 
         if (genericAbility != null)
         {
@@ -164,6 +185,22 @@ public class PlayerController : MonoBehaviour
         if (movementAbility != null)
         {
             movementAbility = InitializeAbility(movementAbility);
+        }
+
+        foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
+        {
+            if (renderer.gameObject.tag == "Player")
+            {
+                renderer.material = GeneralManager.manager.playerMaterials[playerNumber];
+            }
+        }
+        if (GetComponentInChildren<Image>() != null)
+        {
+            GetComponentInChildren<Image>().sprite = GeneralManager.manager.playerAuras[playerNumber];
+        }
+        if (GetComponent<Collider>() != null)
+        {
+            playerCollider = GetComponent<Collider>();
         }
     }
 
@@ -187,17 +224,37 @@ public class PlayerController : MonoBehaviour
 
     public void CommitDie()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        playerState = PlayerState.dead;
+        playerCollider.enabled = false;
+        playerModel.SetActive(false);
+        dead = true;
+
         Debug.Log("Dead");
     }
 
+    public void Respawn()
+    {
+        playerState = PlayerState.inGame;
+        playerCollider.enabled = true;
+        playerModel.SetActive(true);
+        dead = false;
 
+        Debug.Log("I lived bitch");
+    }
 
     public void OnPrimaryButton(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
         {
-            genericAbility.Activate(Time.deltaTime);
+            if (dead == false)
+            {
+                genericAbility.Activate(Time.deltaTime);
+            }
+            else
+            {
+                Respawn();
+            }
         }
     }
 
@@ -228,6 +285,14 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("spawned");
         PlayerSpawned();
+    }
+
+    public void OnAnyAction(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && dead == true)
+        {
+            Respawn();
+        }
     }
 
     public void OnMovementAxis(InputAction.CallbackContext ctx) => moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
