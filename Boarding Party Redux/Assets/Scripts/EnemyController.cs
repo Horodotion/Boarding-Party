@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     public Stats enemyStats;
     public EnemyState currentState;
     public bool dead;
-    public int score;
 
     [HideInInspector] public NavMeshAgent navAgent;
     [HideInInspector] public GameObject targettedPlayer;
@@ -152,18 +151,32 @@ public class EnemyController : MonoBehaviour
         return playerDetected;
     }
 
-    public virtual void ChangeHealth(int i)
+    public virtual void ChangeHealth(int i, PlayerController playerCreditedForKill = null)
     {
         enemyStats.stat[StatType.health] = Mathf.Clamp(enemyStats.stat[StatType.health] + i, 0, Mathf.Infinity);
         if (enemyStats.stat[StatType.health] <= 0)
         {
-            CommitDie();
+            CommitDie(playerCreditedForKill);
         }
     }
 
-    public virtual void CommitDie()
+    public virtual void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        GeneralManager.manager.score += score;
+        if (playerCreditedForKill != null)
+        {
+            playerCreditedForKill.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score];
+            Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
+        }
+        else
+        {
+            foreach (PlayerController player in GeneralManager.playerList)
+            {
+                player.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score] / 4;
+            }
+        }
+        GeneralManager.manager.score += (int)enemyStats.stat[StatType.score];
+
+
         Destroy(gameObject);
         Debug.Log("Dead");
     }

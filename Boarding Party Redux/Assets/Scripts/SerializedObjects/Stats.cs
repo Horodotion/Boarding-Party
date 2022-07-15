@@ -10,7 +10,8 @@ public enum StatType
     damageMultiplier,
     speed,
     detectionRange,
-    firingSpeed
+    firingSpeed,
+    score
 }
 
 [Serializable] public class StatList
@@ -38,6 +39,7 @@ public class Stats : ScriptableObject
     public Dictionary<StatType, float> baseStat = new Dictionary<StatType, float> {};
     public Dictionary<StatType, float> maxStat = new Dictionary<StatType, float> {};
 
+
     public void SetStats()
     {
         stat = NewDictionary(baseStatList.statValues);
@@ -60,5 +62,15 @@ public class Stats : ScriptableObject
         }
 
         return dict;
+    }
+
+    public void ResetStat(StatType statType)
+    {
+        stat[statType] = baseStat[statType];
+    }
+
+    public void MaximizeStat(StatType statType)
+    {
+        stat[statType] = maxStat[statType];
     }
 }

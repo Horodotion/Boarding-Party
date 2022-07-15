@@ -27,8 +27,21 @@ public class Mine : EnemyController
         }
     }
 
-    public override void CommitDie()
+    public override void CommitDie(PlayerController playerCreditedForKill = null)
     {
+        if (playerCreditedForKill != null)
+        {
+            playerCreditedForKill.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score];
+        }
+        else
+        {
+            foreach (PlayerController player in GeneralManager.playerList)
+            {
+                player.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score] / 4;
+            }
+        }
+        GeneralManager.manager.score += (int)enemyStats.stat[StatType.score];
+    
         dead = true;
         Explode();
         Destroy(gameObject);

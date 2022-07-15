@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public Stats playerStats;
 
     //Variables to reference other scripts or controls
-    [HideInInspector]public int playerNumber, playerDisplayNumber;
+    public int playerNumber, playerDisplayNumber, deathCount = 0, respawnCost;
     [HideInInspector] public PlayerState playerState;
     [HideInInspector] public InputActionAsset playerInputs;
     public Gun gun;
@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         playerInputs = GetComponent<PlayerInput>().actions;
 
         //playerStats = Instantiate(playerStats);
-        PlayerSpawned();
 
         DontDestroyOnLoad(gameObject);
 
@@ -63,11 +62,10 @@ public class PlayerController : MonoBehaviour
                 GeneralManager.playerList[i] = this;
                 playerNumber = i;
                 playerDisplayNumber = i+1;
+                PlayerSpawned();
                 break;
             }
         }
-
-
     }
 
     void Enable()
@@ -215,8 +213,8 @@ public class PlayerController : MonoBehaviour
     {
         playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
 
-        Debug.Log(playerStats.stat[StatType.health] + " health remaining");
-        if (playerStats.stat[StatType.health] <= 0)
+        // Debug.Log(playerStats.stat[StatType.health] + " health remaining");
+        if (playerStats.stat[StatType.health] <= 0 && !dead)
         {
             CommitDie();
         }
@@ -226,21 +224,33 @@ public class PlayerController : MonoBehaviour
     {
         // Destroy(gameObject);
         playerState = PlayerState.dead;
+        deathCount++;
+        respawnCost = 100 * deathCount;
         playerCollider.enabled = false;
         playerModel.SetActive(false);
         dead = true;
 
-        Debug.Log("Dead");
+        // Debug.Log("Dead");
     }
 
     public void Respawn()
     {
-        playerState = PlayerState.inGame;
-        playerCollider.enabled = true;
-        playerModel.SetActive(true);
-        dead = false;
+        if (GeneralManager.manager.score >= respawnCost)
+        {
+            GeneralManager.manager.score -= respawnCost;
 
-        Debug.Log("I lived bitch");
+            playerState = PlayerState.inGame;
+            playerCollider.enabled = true;
+            playerStats.ResetStat(StatType.health);
+            playerModel.SetActive(true);
+            dead = false;
+
+            Debug.Log("I lived bitch");
+        }
+        else
+        {
+            Debug.Log("Come back when you're a little mmmmm... Richer?");
+        }
     }
 
     public void OnPrimaryButton(InputAction.CallbackContext ctx)

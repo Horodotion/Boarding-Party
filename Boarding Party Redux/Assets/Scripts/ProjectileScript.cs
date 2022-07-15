@@ -19,6 +19,7 @@ public class ProjectileScript : MonoBehaviour
     public int projectileSpeed;
     [HideInInspector] public Rigidbody rb;
     public float lifeSpan;
+    public PlayerController ourPlayer;
 
     void Awake()
     {
@@ -53,7 +54,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (hostileFaction == Faction.Enemy)
         {
-            hit.GetComponent<EnemyController>().ChangeHealth(-damage);
+            hit.GetComponent<EnemyController>().ChangeHealth(-damage, ourPlayer);
 
             if (ourStatusEffects.Count != 0)
             {
