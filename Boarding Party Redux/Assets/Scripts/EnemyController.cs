@@ -13,22 +13,28 @@ public enum EnemyState
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Stats")]
     public Stats enemyStats;
     public EnemyState currentState;
-    [HideInInspector] public NavMeshAgent navAgent;
-    public GameObject targettedPlayer;
-    public float lastDetectedPlayer;
-    public float lastDetectedPlayerDuration = 5f;
-    public Faction hostileFaction = Faction.Player;
     public bool dead;
+
+    [HideInInspector] public NavMeshAgent navAgent;
+    [HideInInspector] public GameObject targettedPlayer;
+    [HideInInspector] public float lastDetectedPlayer;
+    [HideInInspector] public float lastDetectedPlayerDuration = 5f;
+    [HideInInspector] public Faction hostileFaction = Faction.Player;
+    [HideInInspector] public Animator enemyAnim;
 
     public virtual void Awake()
     {
         enemyStats = Instantiate(enemyStats);
         enemyStats.SetStats();
 
-        navAgent = GetComponent<NavMeshAgent>();
-        navAgent.speed = enemyStats.stat[StatType.speed];
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            navAgent = GetComponent<NavMeshAgent>();
+            navAgent.speed = enemyStats.stat[StatType.speed];
+        }
     }
 
     public virtual void FixedUpdate()
@@ -69,7 +75,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            lastDetectedPlayer = MasterManager.ReduceToZero(lastDetectedPlayer, Time.deltaTime);
+            lastDetectedPlayer = GeneralManager.ReduceToZeroByTime(lastDetectedPlayer);
             if (lastDetectedPlayer <= 0f)
             {
                 currentState = EnemyState.idle;
@@ -86,7 +92,10 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            navAgent.SetDestination(targettedPlayer.transform.position);
+            if (GetComponent<NavMeshAgent>() != null)
+            {
+                navAgent.SetDestination(targettedPlayer.transform.position);
+            }
         }
     }
 
@@ -103,7 +112,7 @@ public class EnemyController : MonoBehaviour
                 RaycastHit raycastHit;
                 Physics.Raycast(transform.position, hit.gameObject.transform.position - transform.position, out raycastHit);
 
-                if (raycastHit.collider.gameObject == hit.gameObject)
+                if (hit.gameObject != null && raycastHit.collider != null && raycastHit.collider.gameObject == hit.gameObject)
                 {
                     players.Add(hit.gameObject);
                 }
@@ -142,17 +151,32 @@ public class EnemyController : MonoBehaviour
         return playerDetected;
     }
 
-    public virtual void ChangeHealth(int i)
+    public virtual void ChangeHealth(int i, PlayerController playerCreditedForKill = null)
     {
         enemyStats.stat[StatType.health] = Mathf.Clamp(enemyStats.stat[StatType.health] + i, 0, Mathf.Infinity);
         if (enemyStats.stat[StatType.health] <= 0)
         {
-            CommitDie();
+            CommitDie(playerCreditedForKill);
         }
     }
 
-    public virtual void CommitDie()
+    public virtual void CommitDie(PlayerController playerCreditedForKill = null)
     {
+        if (playerCreditedForKill != null)
+        {
+            playerCreditedForKill.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score];
+            Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
+        }
+        else
+        {
+            foreach (PlayerController player in GeneralManager.playerList)
+            {
+                player.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score] / 4;
+            }
+        }
+        GeneralManager.manager.score += (int)enemyStats.stat[StatType.score];
+
+
         Destroy(gameObject);
         Debug.Log("Dead");
     }

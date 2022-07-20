@@ -17,7 +17,7 @@ MonoBehaviour:
     - stat: 0
       value: 10
     - stat: 1
-      value: 10
+      value: 1000
     - stat: 3
       value: 5
     - stat: 4

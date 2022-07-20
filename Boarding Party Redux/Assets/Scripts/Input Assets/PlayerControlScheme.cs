@@ -98,6 +98,15 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""19a7d146-c7bb-44f0-8a1c-b6f3c1fb24d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -364,6 +373,17 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
                     ""action"": ""primaryButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2515cea5-b9ab-4ab6-bc2e-e2ec4e19416c"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""AnyAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -403,6 +423,7 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
         m_PlayerControls_lookAxis = m_PlayerControls.FindAction("lookAxis", throwIfNotFound: true);
         m_PlayerControls_startButton = m_PlayerControls.FindAction("startButton", throwIfNotFound: true);
         m_PlayerControls_selectButton = m_PlayerControls.FindAction("selectButton", throwIfNotFound: true);
+        m_PlayerControls_AnyAction = m_PlayerControls.FindAction("AnyAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -470,6 +491,7 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControls_lookAxis;
     private readonly InputAction m_PlayerControls_startButton;
     private readonly InputAction m_PlayerControls_selectButton;
+    private readonly InputAction m_PlayerControls_AnyAction;
     public struct PlayerControlsActions
     {
         private @PlayerControlScheme m_Wrapper;
@@ -482,6 +504,7 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
         public InputAction @lookAxis => m_Wrapper.m_PlayerControls_lookAxis;
         public InputAction @startButton => m_Wrapper.m_PlayerControls_startButton;
         public InputAction @selectButton => m_Wrapper.m_PlayerControls_selectButton;
+        public InputAction @AnyAction => m_Wrapper.m_PlayerControls_AnyAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -515,6 +538,9 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
                 @selectButton.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSelectButton;
                 @selectButton.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSelectButton;
                 @selectButton.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnSelectButton;
+                @AnyAction.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAnyAction;
+                @AnyAction.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAnyAction;
+                @AnyAction.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnAnyAction;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -543,6 +569,9 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
                 @selectButton.started += instance.OnSelectButton;
                 @selectButton.performed += instance.OnSelectButton;
                 @selectButton.canceled += instance.OnSelectButton;
+                @AnyAction.started += instance.OnAnyAction;
+                @AnyAction.performed += instance.OnAnyAction;
+                @AnyAction.canceled += instance.OnAnyAction;
             }
         }
     }
@@ -575,5 +604,6 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
         void OnLookAxis(InputAction.CallbackContext context);
         void OnStartButton(InputAction.CallbackContext context);
         void OnSelectButton(InputAction.CallbackContext context);
+        void OnAnyAction(InputAction.CallbackContext context);
     }
 }

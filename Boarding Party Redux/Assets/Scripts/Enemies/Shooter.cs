@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shooter : EnemyController
 {
+    [Header("Projectile Variables")]
     public GameObject projectilePrefab;
     public Gradient colorGradient;
-    public List<Transform> firePositions;
+    [HideInInspector] public List<Transform> firePositions;
     public float firingRange;
     public float firingSpeed;
-    public float nextTimeToFire;
+    [HideInInspector] public float nextTimeToFire;
     [HideInInspector] public int currentFiringPosition = 0;
 
     public override void Awake()
@@ -28,7 +29,7 @@ public class Shooter : EnemyController
 
         if (nextTimeToFire > 0)
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
         }
     }
 
@@ -38,7 +39,7 @@ public class Shooter : EnemyController
 
         if (nextTimeToFire > 0)
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
         }
     }
 
@@ -55,8 +56,11 @@ public class Shooter : EnemyController
         }
         else
         {
-            nextTimeToFire = MasterManager.ReduceToZero(nextTimeToFire, Time.deltaTime);
-            navAgent.SetDestination(targettedPlayer.transform.position);
+            nextTimeToFire = GeneralManager.ReduceToZeroByTime(nextTimeToFire);
+            if (GetComponent<UnityEngine.AI.NavMeshAgent>() != null)
+            {
+                navAgent.SetDestination(targettedPlayer.transform.position);
+            }
         }
     }
 

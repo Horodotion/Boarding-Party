@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Pistol
   gunProjectilePrefab: {fileID: 8352566214438318506, guid: 8d3d92016f07c5a4eaa35a999ba60e4e, type: 3}
-  gunDamage: 5
+  gunDamage: 100
   gunProjectileSpeed: 30
   projectileLifeSpan: 3
   rateOfFire: 2
