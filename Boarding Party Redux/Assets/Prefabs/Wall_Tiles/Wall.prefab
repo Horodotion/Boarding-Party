@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: floor 4x4
       objectReference: {fileID: 0}
+    - target: {fileID: -70097777754639041, guid: 8ae38b074cc1dbb4f9b186d9e0dcb7ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3070384642381290354, guid: 8ae38b074cc1dbb4f9b186d9e0dcb7ad, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
