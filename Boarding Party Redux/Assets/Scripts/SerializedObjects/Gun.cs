@@ -26,6 +26,11 @@ public abstract class Gun : ScriptableObject
         bulletScript.hostileFaction = hostileFaction;
         bulletScript.lifeSpan = projectileLifeSpan;
         bulletScript.damage = gunDamage;
+        
+        if (player != null)
+        {
+            bulletScript.ourPlayer = player;
+        }
 
         if (statusEffects.Count != 0)
         {

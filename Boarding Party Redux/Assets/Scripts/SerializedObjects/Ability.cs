@@ -53,7 +53,7 @@ public abstract class Ability : ScriptableObject
         {  
             if (cooldown > 0)
             {
-                cooldown = MasterManager.ReduceToZero(cooldown, i);
+                cooldown = GeneralManager.ReduceToZeroByTime(cooldown);
             }
             if (cooldown <= 0)
             {
