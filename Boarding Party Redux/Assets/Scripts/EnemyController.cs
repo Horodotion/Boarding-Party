@@ -162,21 +162,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        if (playerCreditedForKill != null)
-        {
-            playerCreditedForKill.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score];
-            Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
-        }
-        else
-        {
-            foreach (PlayerController player in GeneralManager.playerList)
-            {
-                player.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score] / 4;
-            }
-        }
-        GeneralManager.manager.score += (int)enemyStats.stat[StatType.score];
-
-
+        GivePoints((int)enemyStats.stat[StatType.score]);
         Destroy(gameObject);
         Debug.Log("Dead");
     }
@@ -200,5 +186,25 @@ public class EnemyController : MonoBehaviour
         //         }
         //     }
         // }
+    }
+
+    public virtual void GivePoints(int scoreToGive, PlayerController playerCreditedForKill = null)
+    {
+        GeneralManager.manager.score += scoreToGive;
+        if (playerCreditedForKill != null)
+        {
+            playerCreditedForKill.playerStats.stat[StatType.score] += scoreToGive;
+            Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
+        }
+        else
+        {
+            foreach (PlayerController player in GeneralManager.playerList)
+            {
+                if (player != null)
+                {
+                    player.playerStats.stat[StatType.score] += scoreToGive / 4;
+                }
+            }
+        }
     }
 }

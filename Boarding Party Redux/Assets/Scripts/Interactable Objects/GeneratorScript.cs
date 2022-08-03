@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GeneratorScript : EnemyController
 {
+    [Header("Generator Variables")]
     public int powerGridID;
+    public int health;
+    public int score;
 
 
     public override void Awake()
@@ -24,36 +27,26 @@ public class GeneratorScript : EnemyController
         }
     }
 
+    public override void FixedUpdate()
+    {
+            
+    }
+
     public override void ChangeHealth(int i, PlayerController playerCreditedForKill = null)
     {
-        // enemyStats.stat[StatType.health] = Mathf.Clamp(enemyStats.stat[StatType.health] + i, 0, Mathf.Infinity);
-        // if (enemyStats.stat[StatType.health] <= 0)
-        // {
-        //     CommitDie(playerCreditedForKill);
-        // }
+        health = (int)Mathf.Clamp(health + i, 0, Mathf.Infinity);
+        if (health <= 0)
+        {
+            CommitDie(playerCreditedForKill);
+        }
     }
 
     public override void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        // if (playerCreditedForKill != null)
-        // {
-        //     playerCreditedForKill.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score];
-        //     Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
-        // }
-        // else
-        // {
-        //     foreach (PlayerController player in GeneralManager.playerList)
-        //     {
-        //         player.playerStats.stat[StatType.score] += enemyStats.stat[StatType.score] / 4;
-        //     }
-        // }
-        // GeneralManager.manager.score += (int)enemyStats.stat[StatType.score];
-
-
+        GivePoints(score);
         LevelManager.instance.DisablePowerGrid(powerGridID);
 
-
-        // Destroy(gameObject);
+        Destroy(this);
         Debug.Log("Dead");
     }
 }

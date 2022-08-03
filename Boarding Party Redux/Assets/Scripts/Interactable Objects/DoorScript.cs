@@ -15,7 +15,7 @@ public class DoorScript : MonoBehaviour
     public DoorType doorType;
 
     [Header("Energy Field Variables")]
-    public int powerGridID;
+    public List<int> powerGridID;
 
     [Header("Blast Door Variables")]
     public bool keyRequired;
@@ -32,6 +32,9 @@ public class DoorScript : MonoBehaviour
             case (DoorType.blastDoor):
                 InitializeBlastDoor();
                 break;
+
+            default:
+                break;
         }
     }
 
@@ -39,7 +42,10 @@ public class DoorScript : MonoBehaviour
     {
         if (LevelManager.instance != null)
         {
-            LevelManager.instance.AddToPowerGrid(powerGridID, gameObject);
+            foreach (int i in powerGridID)
+            {
+                LevelManager.instance.AddToPowerGrid(i, gameObject);
+            }
         }
         else
         {
@@ -52,8 +58,21 @@ public class DoorScript : MonoBehaviour
 
     }
 
-    public void Deactivate()
+    public void Deactivate(int powerGridIDDeactivated)
     {
-        gameObject.SetActive(false);
+        switch (doorType)
+        {
+            case (DoorType.energyField):
+                powerGridID.Remove(powerGridIDDeactivated);
+                if (powerGridID.Count <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+                break;
+
+            case (DoorType.blastDoor):
+            default:    
+                break;
+        }
     }
 }

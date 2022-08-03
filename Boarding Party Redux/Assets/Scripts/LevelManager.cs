@@ -24,13 +24,13 @@ public class LevelManager : MonoBehaviour
 
     public void AddToPowerGrid(int powerGridID, GameObject objectToAdd)
     {
-        if (powerGrid[powerGridID] != null)
+        if (powerGrid.ContainsKey(powerGridID))
         {
             powerGrid[powerGridID].Add(objectToAdd);
         }
         else
         {
-            powerGrid[powerGridID] = new List<GameObject>();
+            powerGrid.Add(powerGridID, new List<GameObject>());
             powerGrid[powerGridID].Add(objectToAdd);
         }
     }
@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
         {
             if (obj.GetComponent<DoorScript>() != null)
             {
-                obj.GetComponent<DoorScript>().Deactivate();
+                obj.GetComponent<DoorScript>().Deactivate(powerGridID);
             }
         }
     }

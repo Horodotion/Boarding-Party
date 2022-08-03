@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18154548, g: 0.22718826, b: 0.30740488, a: 1}
+  m_IndirectSpecularColor: {r: 0.18154588, g: 0.22718866, b: 0.30740577, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15881,6 +15881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5228525286016263294, guid: a76298b0fef2e1743bb7a7704e99b771, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a76298b0fef2e1743bb7a7704e99b771, type: 3}
 --- !u!4 &1433671528 stripped
@@ -19807,7 +19811,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 689052489}
   - {fileID: 865349561}
   - {fileID: 1297020381}
   - {fileID: 267059547}
@@ -19824,6 +19827,7 @@ Transform:
   - {fileID: 1817188495}
   - {fileID: 345930715}
   - {fileID: 1953645134}
+  - {fileID: 689052489}
   - {fileID: 115812976}
   - {fileID: 1848039243}
   - {fileID: 1082035713}
