@@ -38,7 +38,8 @@ public class ProjectileScript : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
         //Debug.Log(col.gameObject.tag);
-        if (col.gameObject.tag == "Wall" || col.gameObject.tag == hostileFaction.ToString() + "")
+        if ((col.gameObject.tag == "Wall" || col.gameObject.tag == hostileFaction.ToString() + "") 
+        || (hostileFaction == Faction.Enemy && col.gameObject.tag == "Door"))
         {
             OnHitEffects(col.gameObject);
             Destroy(gameObject);
@@ -52,7 +53,7 @@ public class ProjectileScript : MonoBehaviour
 
     public void OnHitEffects(GameObject hit)
     {
-        if (hostileFaction == Faction.Enemy)
+        if (hostileFaction == Faction.Enemy && hit.GetComponent<EnemyController>() != null)
         {
             hit.GetComponent<EnemyController>().ChangeHealth(-damage, ourPlayer);
 
@@ -65,7 +66,7 @@ public class ProjectileScript : MonoBehaviour
                 }
             }
         }
-        else if (hostileFaction == Faction.Player)
+        else if (hostileFaction == Faction.Player && hit.GetComponent<PlayerController>() != null)
         {
             hit.GetComponent<PlayerController>().ChangeHealth(-damage);
 
