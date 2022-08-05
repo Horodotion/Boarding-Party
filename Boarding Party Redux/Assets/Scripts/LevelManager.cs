@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public Dictionary<int, List<GameObject>> powerGrid;
 
-    // public List<PowerGrid> currentLevelPowerGrids;
+    public float countdownTimer;
 
     public void Awake()
     {

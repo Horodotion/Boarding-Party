@@ -661,9 +661,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8135203969974145708}
   - component: {fileID: 9109029769565568115}
+  - component: {fileID: 9092846086298072472}
   m_Layer: 0
   m_Name: Generator
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,6 +718,20 @@ MonoBehaviour:
   enemyAnim: {fileID: 0}
   powerGridID: 0
   health: 0
+  score: 0
+--- !u!65 &9092846086298072472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097324019951001791}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.5, y: 4, z: 4}
+  m_Center: {x: 0, y: 2, z: -1.75}
 --- !u!1 &5865853138546305688
 GameObject:
   m_ObjectHideFlags: 0

@@ -1349,19 +1349,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: 8a166c9c99ec5574a8becd65c32728e2, type: 2}
   currentState: 0
+  dead: 0
   navAgent: {fileID: 0}
   targettedPlayer: {fileID: 0}
   lastDetectedPlayer: 0
   lastDetectedPlayerDuration: 5
   hostileFaction: 0
-  dead: 0
+  enemyAnim: {fileID: 0}
   turretHead: {fileID: 7746618327058185679}
   turretRotationSpeed: 30
   projectilePrefab: {fileID: 8352566214438318506, guid: 8d3d92016f07c5a4eaa35a999ba60e4e, type: 3}
   colorGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0.54901963, b: 0.54901963, a: 1}
+    key0: {r: 0, g: 1, b: 0, a: 1}
+    key1: {r: 0, g: 1, b: 0, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1377,7 +1378,7 @@ MonoBehaviour:
     ctime6: 0
     ctime7: 0
     atime0: 0
-    atime1: 45875
+    atime1: 65535
     atime2: 65535
     atime3: 0
     atime4: 0
@@ -1386,8 +1387,7 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 2
-    m_NumAlphaKeys: 3
+    m_NumAlphaKeys: 2
   firePositions: []
-  firingSpeed: 0.2
   nextTimeToFire: 0
   currentFiringPosition: 0
