@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6126506131767024863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -136,8 +138,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 4, z: 1.25}
-  m_Center: {x: 0, y: 2, z: 2.4}
+  m_Size: {x: 0.5, y: 3, z: 1.25}
+  m_Center: {x: 0, y: 1.5, z: 2.4}
 --- !u!65 &474915945324903022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,8 +151,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 4, z: 1.25}
-  m_Center: {x: 0, y: 2, z: -2.4}
+  m_Size: {x: 0.5, y: 3, z: 1.25}
+  m_Center: {x: 0, y: 1.5, z: -2.4}
 --- !u!1 &5228525286016263294
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +166,7 @@ GameObject:
   - component: {fileID: 6021181290870080939}
   - component: {fileID: 7955361184600427900}
   - component: {fileID: 6159890512644079793}
-  - component: {fileID: 7955614556643124401}
+  - component: {fileID: 2439306031913442291}
   m_Layer: 2
   m_Name: Door
   m_TagString: Untagged
@@ -212,6 +214,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -236,6 +239,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!95 &7955361184600427900
 Animator:
   serializedVersion: 3
@@ -268,7 +272,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3.2, z: 6}
   m_Center: {x: 0, y: 1.6, z: 0}
---- !u!114 &7955614556643124401
+--- !u!114 &2439306031913442291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,15 +281,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5228525286016263294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86daec1aa8853d42a378bacc52431c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 82cb252fb29948a4c81fc795fa61f798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorState: 0
-  animator: {fileID: 0}
-  nearbyPlayers: []
-  doorTrigger: Switch Door State
-  doordoordoor: DoorDoorDoor
-  doorUnlocked: 0
+  doorType: 1
+  powerGridID: 
+  keyRequired: 0
+  openDoor: 0
+  doorAnim: {fileID: 0}
+  doorTrigger: {fileID: 0}
 --- !u!1 &6072659918605405122
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +346,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -366,6 +371,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &974180605021055068
 BoxCollider:
   m_ObjectHideFlags: 0
