@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
             if (GeneralManager.playerList[i] == null)
             {
                 GeneralManager.playerList[i] = this;
+                GeneralManager.playersAliveInGame++;
                 playerNumber = i;
                 playerDisplayNumber = i+1;
                 PlayerSpawned();
@@ -222,15 +223,13 @@ public class PlayerController : MonoBehaviour
 
     public void CommitDie()
     {
-        // Destroy(gameObject);
         playerState = PlayerState.dead;
+        GeneralManager.playersAliveInGame--;
         deathCount++;
         respawnCost = 100 * deathCount;
         playerCollider.enabled = false;
         playerModel.SetActive(false);
         dead = true;
-
-        // Debug.Log("Dead");
     }
 
     public void Respawn()
@@ -238,6 +237,7 @@ public class PlayerController : MonoBehaviour
         if (GeneralManager.manager.score >= respawnCost)
         {
             GeneralManager.manager.score -= respawnCost;
+            GeneralManager.playersAliveInGame++;
 
             playerState = PlayerState.inGame;
             playerCollider.enabled = true;
@@ -283,7 +283,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnUtilityButton(InputAction.CallbackContext ctx)
     {
-
+        if (ctx.performed && playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+        {
+            GeneralManager.manager.currentlySelectedButton.onClick.Invoke();
+            // GeneralManager.manager.currentlySelectedButton.CancelInvoke();
+        }
     }
 
     public void OnStartButton(InputAction.CallbackContext ctx)
