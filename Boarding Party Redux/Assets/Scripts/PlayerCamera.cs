@@ -16,9 +16,6 @@ public class PlayerCamera : MonoBehaviour
         {
             if (player != null && !player.dead)
             {
-                // Vector3 playerPos = player.gameObject.transform.position;
-                // newPlayerLocation = new Vector3(playerPos.x, transform.y, playerPos.z);
-
                 totalPlayers++;
                 totalX += player.gameObject.transform.position.x;
                 totalZ += player.gameObject.transform.position.z;
