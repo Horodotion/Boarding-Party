@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum Faction
 {
@@ -25,6 +26,15 @@ public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager manager;
     public static PlayerController[] playerList = new PlayerController[4];
+    public static int playersAliveInGame;
+
+    [Header("UI Menus")]
+    public GameObject pauseMenu;
+    public GameObject winScreen;
+    public GameObject timerText;
+    public GameObject selector;
+    public Button currentlySelectedButton;
+    public bool buttonPressedForFrame;
 
     [Header("Game Score")]
     public int score;
@@ -63,6 +73,26 @@ public class GeneralManager : MonoBehaviour
                         break;
                 }
             };
+    }
+
+    public void OpenWinScreen()
+    {
+        winScreen.SetActive(true);
+
+        foreach(PlayerController player in playerList)
+        {
+            if (player != null)
+            {
+                player.playerState = PlayerState.inMenu;
+            }
+        }
+    }
+
+    public void LoadNextLevel()
+    {
+        Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        winScreen.SetActive(false);
     }
 
     public static float ReduceToZeroByTime(float numberToReduce)

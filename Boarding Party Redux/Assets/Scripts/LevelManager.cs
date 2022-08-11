@@ -7,7 +7,9 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public Dictionary<int, List<GameObject>> powerGrid;
 
-    public float countdownTimer;
+    public float selfDestructTimer;
+    public float amountOfTimeBeforeSelfDestruct;
+    public bool selfDestructing = false;
 
     public void Awake()
     {
@@ -19,6 +21,21 @@ public class LevelManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (selfDestructing)
+        {
+            if (selfDestructTimer >= 0)
+            {
+                selfDestructTimer -= Time.deltaTime;
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -44,5 +61,11 @@ public class LevelManager : MonoBehaviour
                 obj.GetComponent<DoorScript>().Deactivate(powerGridID);
             }
         }
+    }
+
+    public void BeginSelfDestructSequence()
+    {
+        selfDestructing = true;
+        selfDestructTimer = amountOfTimeBeforeSelfDestruct;
     }
 }
