@@ -16,7 +16,7 @@ public class ExitZoneScript : MonoBehaviour
 
             if (playersInExitZone.Count >= GeneralManager.playersAliveInGame)
             {
-                GeneralManager.manager.OpenWinScreen();
+                GeneralManager.OpenMenu(GeneralManager.winScreen);
             }
         }
     }

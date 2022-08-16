@@ -1439,14 +1439,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b224f4048cff9b44a90cd5ede0dc14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelButton: {fileID: 7286857262006171544}
-  mainMenuButton: {fileID: 6961941177381287957}
-  playerScoreTextBoxes: []
   allMenuButtons:
   - {fileID: 7286857262006171544}
   - {fileID: 6961941177381287957}
-  selector: {fileID: 0}
-  allPlayersSurvivedIcon: {fileID: 0}
+  selector: {fileID: 6961941177273786747}
+  nextLevelButton: {fileID: 7286857262006171544}
+  mainMenuButton: {fileID: 6961941177381287957}
+  playerScoreTextBoxes:
+  - {fileID: 6961941176334509014}
+  - {fileID: 6961941176291234092}
+  - {fileID: 6961941177738652698}
+  - {fileID: 6961941177617244372}
+  allPlayersSurvivedIcon: {fileID: 6961941176728269077}
 --- !u!1 &6961941177269250951
 GameObject:
   m_ObjectHideFlags: 0

@@ -1264,13 +1264,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4127826038114844274, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4170147503353259317, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
       propertyPath: m_Name
       value: CoreReactor
-      objectReference: {fileID: 0}
-    - target: {fileID: 4170147503353259317, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8656399756154917910, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
       propertyPath: m_RootOrder
@@ -1318,34 +1318,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
---- !u!1 &803101370 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4170147503353259317, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
-  m_PrefabInstance: {fileID: 803101369}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &803101371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803101370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494e222303264f54ab3a5b1d5b23194e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyStats: {fileID: 0}
-  currentState: 0
-  dead: 0
-  navAgent: {fileID: 0}
-  targettedPlayer: {fileID: 0}
-  lastDetectedPlayer: 0
-  lastDetectedPlayerDuration: 5
-  hostileFaction: 0
-  enemyAnim: {fileID: 0}
-  health: 100
-  score: 5000
 --- !u!1001 &860674422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3166,12 +3138,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 641700345, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_Name
-      value: Win Screen
-      objectReference: {fileID: 0}
-    - target: {fileID: 641700345, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1395334509, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_Name

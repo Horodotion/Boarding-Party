@@ -12,47 +12,71 @@ public enum Faction
     Wall
 }
 
-public enum PlayerClass
+public enum GameState
 {
-    mobile,
-    soldier,
-    specops,
-    engineer,
-    heavy,
-    basic
+    inGame,
+    inMenu,
+    inMainMenu,
+    other
+}
+
+[System.Serializable]
+public class PlayerObject
+{
+    public Material playerMaterial;
+    public Sprite playerAura;
 }
 
 public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager manager;
     public static PlayerController[] playerList = new PlayerController[4];
+    public static PlayerState[] previousPlayerState = new PlayerState[4];
     public static int playersAliveInGame;
+    public static GameState gameState = GameState.inGame;
 
     [Header("UI Menus")]
-    public GameObject pauseMenu;
-    public GameObject winScreen;
+    public GameObject inGameUI;
+    public static PauseMenuScript pauseMenu;
+    public static WinScreenScript winScreen;
+    public static HubMenuScript hubMenu;
     public GameObject timerText;
     public GameObject selector;
+
+    public List<Button> currentMenuObjects;
     public Button currentlySelectedButton;
+    public int currentlySelectedButtonID;
     public bool buttonPressedForFrame;
 
     [Header("Game Score")]
     public int score;
 
     [Header("Player Prefab Content")]
-    public Material[] playerMaterials;
-    public Sprite[] playerAuras;
+    public PlayerObject[] playerObjects;
 
     void Awake()
     {
-        if (manager != this && manager == null)
+        if (manager == null)
         {
             manager = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (manager != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        ExitMenus();
+    }
+
+    void Update()
+    {
+        if (buttonPressedForFrame == true)
+        {
+            buttonPressedForFrame = false;
         }
     }
 
@@ -75,10 +99,111 @@ public class GeneralManager : MonoBehaviour
             };
     }
 
-    public void OpenWinScreen()
+    public void CycleThroughMenu(int direction)
     {
-        winScreen.SetActive(true);
+        buttonPressedForFrame = true;
 
+        if (currentMenuObjects != null)
+        {
+            if (direction < 0)
+            {
+                currentlySelectedButtonID++;
+
+                if (currentlySelectedButtonID > currentMenuObjects.Count - 1)
+                {
+                    currentlySelectedButtonID = 0;
+                }
+            }
+            else if (direction > 0)
+            {
+                currentlySelectedButtonID--;
+
+                if (currentlySelectedButtonID < 0)
+                {
+                    currentlySelectedButtonID = currentMenuObjects.Count - 1;
+                }
+            }
+
+            if (currentMenuObjects[currentlySelectedButtonID] != null)
+            {
+                currentlySelectedButton = currentMenuObjects[currentlySelectedButtonID];
+                selector.transform.position = currentMenuObjects[currentlySelectedButtonID].gameObject.transform.position;
+                // Debug.Log("Current Button: " + currentlySelectedButtonID);
+            }
+            else
+            {
+                Debug.Log("Menu Object is null");
+            }
+        }
+        else
+        {
+            Debug.Log("No Menu");
+        }
+    }
+
+    public void SetUpMenu(List<Button> menuObjects)
+    {
+        if (inGameUI != null)
+        {
+            inGameUI.SetActive(false);
+        }
+
+        Time.timeScale = 0;
+        currentMenuObjects = menuObjects;
+        currentlySelectedButtonID = 0;
+        CycleThroughMenu(0);
+
+        foreach(PlayerController player in playerList)
+        {
+            if (player != null)
+            {
+                previousPlayerState[player.playerNumber] = player.playerState;
+                player.playerState = PlayerState.inMenu;
+            }
+        }
+    }
+
+    public void ExitMenus()
+    {
+        gameState = GameState.inGame;
+
+        if (inGameUI != null)
+        {
+            inGameUI.SetActive(true);
+        }
+        Time.timeScale = 1;
+
+        if (winScreen != null && winScreen.gameObject.activeInHierarchy)
+        {
+            winScreen.gameObject.SetActive(false);
+            winScreen.allPlayersSurvivedIcon.SetActive(false);
+        }
+        if (pauseMenu != null && pauseMenu.gameObject.activeInHierarchy)
+        {
+            pauseMenu.gameObject.SetActive(false);
+            pauseMenu.ControlsPanel.SetActive(false);
+        }
+
+        foreach(PlayerController player in playerList)
+        {
+            if (player != null)
+            {
+                if (previousPlayerState[player.playerNumber] != PlayerState.inMenu)
+                {
+                    player.playerState = previousPlayerState[player.playerNumber];
+                }
+                else
+                {
+                    player.playerState = PlayerState.inGame;
+                }
+            }
+        }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        ExitMenus();
+        SceneManager.LoadScene(0);
         foreach(PlayerController player in playerList)
         {
             if (player != null)
@@ -90,9 +215,49 @@ public class GeneralManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Level to Load " + (SceneManager.GetActiveScene().buildIndex + 1));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        winScreen.SetActive(false);
+
+        foreach(PlayerController player in playerList)
+        {
+            if (player != null)
+            {
+                player.playerState = PlayerState.inGame;
+            }
+        }
+
+        ExitMenus();
+    }
+
+    public static void OpenMenu(MenuScript menu)
+    {
+        if (menu != null)
+        {
+            if (GeneralManager.manager.inGameUI != null)
+            {
+                GeneralManager.manager.inGameUI.SetActive(false);
+            }
+
+            menu.Activate();
+
+            foreach(PlayerController player in playerList)
+            {
+                if (player != null)
+                {
+                    previousPlayerState[player.playerNumber] = player.playerState;
+                    player.playerState = PlayerState.inMenu;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("No Menu");
+        }
+    }
+
+    public static void DisconnectPlayer(int playerID)
+    {
+
     }
 
     public static float ReduceToZeroByTime(float numberToReduce)

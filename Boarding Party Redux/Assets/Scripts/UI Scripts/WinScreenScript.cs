@@ -4,21 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WinScreenScript : MonoBehaviour
+public class WinScreenScript : MenuScript
 {
-    [Header("Buttons")]
+    [Header("Win Menu Variables")]
     public Button nextLevelButton;
     public Button mainMenuButton;
     public List<TMP_Text> playerScoreTextBoxes;
-    public List<Button> allMenuButtons;
 
-    [Header("Non-Clickable References")]
-    public GameObject selector;
     public GameObject allPlayersSurvivedIcon;
 
-    public void Awake()
+    void Awake()
     {
-        GeneralManager.manager.currentlySelectedButton = allMenuButtons[0];
+        if (GeneralManager.winScreen == null)
+        {
+            GeneralManager.winScreen = this;
+        }
+        else if (GeneralManager.winScreen != this)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void Start()
+    {
         nextLevelButton.onClick.AddListener(GeneralManager.manager.LoadNextLevel);
+        mainMenuButton.onClick.AddListener(GeneralManager.manager.ReturnToMainMenu);
     }
 }
