@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4876209199967994143, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e58b0d020f9a22b4b8ea5a1fa51d4e79, type: 2}
     - target: {fileID: 5097324019951001791, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Name
-      value: Generator
+      value: Blue Generator
       objectReference: {fileID: 0}
     - target: {fileID: 8096555279071977091, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[0]

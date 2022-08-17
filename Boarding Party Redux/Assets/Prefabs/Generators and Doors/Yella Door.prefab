@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5583160138355496240}
   - component: {fileID: 8267109327275864962}
   m_Layer: 2
-  m_Name: Blue Door
+  m_Name: Yella Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e58b0d020f9a22b4b8ea5a1fa51d4e79, type: 2}
+  - {fileID: 2100000, guid: 13e7bc2618a866d44b13942200c39212, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorType: 0
-  powerGridID: 00000000
+  powerGridID: 02000000
   keyRequired: 0
   openDoor: 0
   doorAnim: {fileID: 0}

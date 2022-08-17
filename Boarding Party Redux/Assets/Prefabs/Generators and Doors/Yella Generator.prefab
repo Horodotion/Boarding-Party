@@ -10,19 +10,19 @@ PrefabInstance:
     - target: {fileID: 4876209199967994143, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+      objectReference: {fileID: 2100000, guid: 13e7bc2618a866d44b13942200c39212, type: 2}
     - target: {fileID: 5097324019951001791, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Name
-      value: Red Generator Variant
+      value: Yella Generator
       objectReference: {fileID: 0}
     - target: {fileID: 7173927209303253222, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+      objectReference: {fileID: 2100000, guid: 0f5719ac84a93814bb5366f133411765, type: 2}
     - target: {fileID: 8096555279071977091, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+      objectReference: {fileID: 2100000, guid: 13e7bc2618a866d44b13942200c39212, type: 2}
     - target: {fileID: 8135203969974145708, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -70,10 +70,10 @@ PrefabInstance:
     - target: {fileID: 8209110273728988334, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+      objectReference: {fileID: 2100000, guid: 13e7bc2618a866d44b13942200c39212, type: 2}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: powerGridID
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
