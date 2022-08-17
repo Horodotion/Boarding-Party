@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58,6 +58,18 @@ PrefabInstance:
     - target: {fileID: 2441193248372590144, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_TagString
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460851102167780852, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: powerGridID.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713058771301150123, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+    - target: {fileID: 5673745848711683716, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Name
+      value: Red Door Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6690804082289390959, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_Materials.Array.data[0]

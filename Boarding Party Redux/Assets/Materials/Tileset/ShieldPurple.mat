@@ -82,7 +82,7 @@ Material:
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 0.2
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -97,7 +97,7 @@ Material:
     - _UseRoughnessMap: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.47789323, g: 0.039215676, b: 0.7921569, a: 0.12941177}
+    - _Color: {r: 0.47789323, g: 0.039215676, b: 0.7921569, a: 0.1764706}
     - _EmissionColor: {r: 0.0040060156, g: 0.0004925429, b: 0.0070269457, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Door_Red
+  m_Name: Panel Yella
   m_Shader: {fileID: 4800000, guid: 5c81372d981403744adbdda4433c9c11, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 2
@@ -83,7 +83,7 @@ Material:
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
-    - _Opacity: 0.1
+    - _Opacity: 1
     - _OpacityThreshold: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
@@ -99,8 +99,8 @@ Material:
     - _UseRoughnessMap: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.7921569, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.7176471, g: 0.68295354, b: 0.06274508, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
