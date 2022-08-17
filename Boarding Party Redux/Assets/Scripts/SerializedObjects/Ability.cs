@@ -18,7 +18,6 @@ public abstract class Ability : ScriptableObject
     public float castintTime;
     public int stacks;
     public int stacksMax;
-    public PlayerClass classSpecific = PlayerClass.basic;
     
     public virtual void Activate(float i = 0)
     {

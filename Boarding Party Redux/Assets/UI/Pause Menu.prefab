@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 6936424924492859378}
   - component: {fileID: 6936424924492859372}
   - component: {fileID: 6936424924492859379}
+  - component: {fileID: 937945029210559634}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -833,6 +834,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &937945029210559634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936424924492859377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55bbe9831e589f4438dacd28ab82d31b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allMenuButtons:
+  - {fileID: 6936424923989910019}
+  - {fileID: 6936424924635838619}
+  - {fileID: 6936424923775937141}
+  - {fileID: 6936424924436241521}
+  selector: {fileID: 6936424924269679267}
+  resumeButton: {fileID: 6936424923989910019}
+  controlsButton: {fileID: 6936424924635838619}
+  exitButton: {fileID: 6936424923775937141}
+  mainMenuButton: {fileID: 6936424924436241521}
+  ControlsPanel: {fileID: 6936424925117013386}
 --- !u!1 &6936424924635838617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6936424925117013387
 RectTransform:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     //Variables to reference other scripts or controls
     public int playerNumber, playerDisplayNumber, deathCount = 0, respawnCost;
-    [HideInInspector] public PlayerState playerState;
+    public PlayerState playerState;
     [HideInInspector] public InputActionAsset playerInputs;
     public Gun gun;
     public Ability genericAbility;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [Header("Model and Art Objects")]
     //Variables for components on the player Object
     public GameObject playerModel;
+    public PlayerObject ourPlayerObject;
     [HideInInspector] public CharacterController ourPlayerController;
     [HideInInspector] public Animator animator;
     [HideInInspector] public GameObject firePosition;
@@ -67,11 +68,6 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-    }
-
-    void Enable()
-    {
-
     }
 
     void FixedUpdate()
@@ -165,6 +161,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Ability InitializeAbility(Ability ability)
+    {
+        Ability newAbility = Instantiate(ability);
+        newAbility.player = this;
+        return newAbility;
+    }
+
+    public void ChangeHealth(int i)
+    {
+        playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
+
+        // Debug.Log(playerStats.stat[StatType.health] + " health remaining");
+        if (playerStats.stat[StatType.health] <= 0 && !dead)
+        {
+            CommitDie();
+        }
+    }
+
     public void PlayerSpawned()
     {
         //Getting a reference to the pieces of the game object and children
@@ -186,38 +200,28 @@ public class PlayerController : MonoBehaviour
             movementAbility = InitializeAbility(movementAbility);
         }
 
+        if (GeneralManager.gameState == GameState.inMenu || GeneralManager.gameState == GameState.inMainMenu)
+        {
+            playerState = PlayerState.inMenu;
+            GeneralManager.previousPlayerState[playerNumber] = PlayerState.inMenu;
+        }
+
+        ourPlayerObject = GeneralManager.manager.playerObjects[playerNumber];
+
         foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
         {
             if (renderer.gameObject.tag == "Player")
             {
-                renderer.material = GeneralManager.manager.playerMaterials[playerNumber];
+                renderer.material = ourPlayerObject.playerMaterial;
             }
         }
         if (GetComponentInChildren<Image>() != null)
         {
-            GetComponentInChildren<Image>().sprite = GeneralManager.manager.playerAuras[playerNumber];
+            GetComponentInChildren<Image>().sprite = ourPlayerObject.playerAura;
         }
         if (GetComponent<Collider>() != null)
         {
             playerCollider = GetComponent<Collider>();
-        }
-    }
-
-    public Ability InitializeAbility(Ability ability)
-    {
-        Ability newAbility = Instantiate(ability);
-        newAbility.player = this;
-        return newAbility;
-    }
-
-    public void ChangeHealth(int i)
-    {
-        playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
-
-        // Debug.Log(playerStats.stat[StatType.health] + " health remaining");
-        if (playerStats.stat[StatType.health] <= 0 && !dead)
-        {
-            CommitDie();
         }
     }
 
@@ -253,9 +257,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DisconnectPlayer()
+    {
+
+    }
+
     public void OnPrimaryButton(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && playerState != PlayerState.inMenu)
         {
             if (dead == false)
             {
@@ -270,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnSecondaryButton(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.performed && playerState != PlayerState.inMenu)
         {
             genericAbility.Activate();
         }
@@ -286,13 +295,22 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed && playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
         {
             GeneralManager.manager.currentlySelectedButton.onClick.Invoke();
-            // GeneralManager.manager.currentlySelectedButton.CancelInvoke();
         }
     }
 
     public void OnStartButton(InputAction.CallbackContext ctx)
     {
-        Debug.Log("start");
+        if (ctx.started)
+        {
+            if (playerState != PlayerState.inMenu)
+            {
+                GeneralManager.OpenMenu(GeneralManager.pauseMenu);
+            }
+            else if (GeneralManager.gameState != GameState.inMainMenu)
+            {
+                GeneralManager.manager.ExitMenus();
+            }
+        }
     }
 
     public void OnSelectButton(InputAction.CallbackContext ctx)
@@ -303,14 +321,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnAnyAction(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && dead == true)
+        if (ctx.performed && dead == true && playerState != PlayerState.inMenu)
         {
             Respawn();
         }
     }
 
-    public void OnMovementAxis(InputAction.CallbackContext ctx) => moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
-    public void OnLookAxis(InputAction.CallbackContext ctx) => lookAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+    public void OnMovementAxis(InputAction.CallbackContext ctx)
+    {
+        moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+
+        if (ctx.started && playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+        {
+            GeneralManager.manager.CycleThroughMenu((int)moveAxis.y);
+        }
+    }
+
+    public void OnLookAxis(InputAction.CallbackContext ctx)
+    {
+        lookAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+    }
 
     void OnPlayerJoined()
     {
