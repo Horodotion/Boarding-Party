@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public enum Faction
@@ -40,7 +41,7 @@ public class GeneralManager : MonoBehaviour
     public static PauseMenuScript pauseMenu;
     public static WinScreenScript winScreen;
     public static HubMenuScript hubMenu;
-    public GameObject timerText;
+    public TMP_Text timerText;
     public GameObject selector;
 
     public List<Button> currentMenuObjects;
@@ -53,6 +54,7 @@ public class GeneralManager : MonoBehaviour
 
     [Header("Player Prefab Content")]
     public PlayerObject[] playerObjects;
+    public PlayerUIScript[] playerUIObjects;
 
     void Awake()
     {
@@ -217,6 +219,11 @@ public class GeneralManager : MonoBehaviour
     {
         Debug.Log("Level to Load " + (SceneManager.GetActiveScene().buildIndex + 1));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        if (timerText != null)
+        {
+            timerText.gameObject.SetActive(false);
+        }
 
         foreach(PlayerController player in playerList)
         {
@@ -227,6 +234,11 @@ public class GeneralManager : MonoBehaviour
         }
 
         ExitMenus();
+    }
+
+    public void SetTimerText(float i)
+    {
+        timerText.text = "" + i;
     }
 
     public static void OpenMenu(MenuScript menu)

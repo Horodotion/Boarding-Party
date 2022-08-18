@@ -43,10 +43,9 @@ public class GeneratorScript : EnemyController
 
     public override void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        GivePoints(score);
+        GivePoints(score, playerCreditedForKill);
         LevelManager.instance.DisablePowerGrid(powerGridID);
 
         Destroy(this);
-        Debug.Log("Dead");
     }
 }

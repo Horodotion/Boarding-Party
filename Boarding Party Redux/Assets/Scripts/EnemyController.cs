@@ -162,39 +162,26 @@ public class EnemyController : MonoBehaviour
 
     public virtual void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        GivePoints((int)enemyStats.stat[StatType.score]);
+        GivePoints((int)enemyStats.stat[StatType.score], playerCreditedForKill);
         Destroy(gameObject);
         Debug.Log("Dead");
     }
 
     public virtual void AddStats(ProjectileScript bulletScript = null)
     {
-        // bulletScript.projectileSpeed = gunProjectileSpeed;
         bulletScript.hostileFaction = hostileFaction;
-        // bulletScript.lifeSpan = projectileLifeSpan;
         bulletScript.damage = (int)enemyStats.stat[StatType.damage];
-
-        // if (statusEffects.Count != 0)
-        // {
-        //     for (int i = 0; i < statusEffects.Count; i++)
-        //     {
-        //         Status newStatus = Instantiate(statusEffects[i]);
-        //         bulletScript.ourStatusEffects.Add(newStatus);
-        //         if (newStatus.statusType == StatusType.damage || newStatus.statusType == StatusType.damageOverTime)
-        //         {
-        //             newStatus.statusStrength += gunDamage;
-        //         }
-        //     }
-        // }
     }
 
     public virtual void GivePoints(int scoreToGive, PlayerController playerCreditedForKill = null)
     {
         GeneralManager.manager.score += scoreToGive;
+
         if (playerCreditedForKill != null)
         {
             playerCreditedForKill.playerStats.stat[StatType.score] += scoreToGive;
-            Debug.Log(playerCreditedForKill.playerStats.stat[StatType.score]);
+            playerCreditedForKill.ourUIScript.UpdateScore();
+            Debug.Log(scoreToGive);
         }
         else
         {
@@ -203,6 +190,7 @@ public class EnemyController : MonoBehaviour
                 if (player != null)
                 {
                     player.playerStats.stat[StatType.score] += scoreToGive / 4;
+                    player.ourUIScript.UpdateScore();
                 }
             }
         }

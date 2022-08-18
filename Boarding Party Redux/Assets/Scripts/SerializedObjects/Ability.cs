@@ -21,14 +21,17 @@ public abstract class Ability : ScriptableObject
     
     public virtual void Activate(float i = 0)
     {
-        castintTime = castingDuration;
-        player.playerState = PlayerState.idle;
-        abilityState = AbilityState.casting;
-        
-        stacks--;
-        if (stacks <= 0)
+        if (stacks > 0)
         {
-            stacks = 0;
+            castintTime = castingDuration;
+            player.playerState = PlayerState.idle;
+            abilityState = AbilityState.casting;
+            
+            stacks--;
+            if (stacks <= 0)
+            {
+                stacks = 0;
+            }
         }
     }
     
@@ -61,7 +64,7 @@ public abstract class Ability : ScriptableObject
         }
     }
 
-    public virtual void Fire()
+    public virtual void Fire(PlayerController player)
     {
 
     }

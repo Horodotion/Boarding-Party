@@ -36,10 +36,9 @@ public class CoreGeneratorScript : EnemyController
 
     public override void CommitDie(PlayerController playerCreditedForKill = null)
     {
-        GivePoints(score);
+        GivePoints(score, playerCreditedForKill);
         LevelManager.instance.BeginSelfDestructSequence();
 
         Destroy(this);
-        Debug.Log("Dead");
     }
 }

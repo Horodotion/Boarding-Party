@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 414632467855991703}
   - component: {fileID: 186320271849199860}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,6 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6115147280788491681}
+  - component: {fileID: 4374835534038692212}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -624,6 +625,26 @@ RectTransform:
   m_AnchoredPosition: {x: 250, y: -150}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4374835534038692212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115147280788491680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ba8bef20231694da128999f772ad14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ourPlayer: {fileID: 0}
+  playerImage: {fileID: 0}
+  healthbar: {fileID: 186320271849199860}
+  grenadeText: {fileID: 6502447518651565540}
+  keyText: {fileID: 1564414303609240115}
+  dashText: {fileID: 4352948221204985483}
+  scoreText: {fileID: 1733514713913028722}
+  noPlayerConnected: {fileID: 0}
 --- !u!1 &6634568466218657068
 GameObject:
   m_ObjectHideFlags: 0
