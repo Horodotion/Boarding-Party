@@ -31,10 +31,14 @@ public class LevelManager : MonoBehaviour
             if (selfDestructTimer >= 0)
             {
                 selfDestructTimer -= Time.deltaTime;
+
+                float timeToSend = Mathf.Round(selfDestructTimer);
+                GeneralManager.manager.SetTimerText(timeToSend);
+
             }
             else
             {
-
+                GeneralManager.OpenMenu(GeneralManager.winScreen);
             }
         }
     }
@@ -67,5 +71,11 @@ public class LevelManager : MonoBehaviour
     {
         selfDestructing = true;
         selfDestructTimer = amountOfTimeBeforeSelfDestruct;
+
+        if (GeneralManager.manager.timerText != null)
+        {
+            GeneralManager.manager.SetTimerText(selfDestructTimer);
+            GeneralManager.manager.timerText.gameObject.SetActive(true);
+        }
     }
 }

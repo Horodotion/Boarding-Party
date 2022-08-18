@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   abilityState: 2
+  player: {fileID: 0}
   cooldown: 5
-  cooldownDuration: 0
+  cooldownDuration: 5
   castingDuration: 0.5
   castintTime: 0
   stacks: 2
   stacksMax: 2
-  classSpecific: 5
   movementVector: {x: 0, y: 0, z: 0}

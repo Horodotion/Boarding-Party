@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector2 lookAxis;
     [HideInInspector] public bool dead;
 
+    [Header("UI Components")]
+    public PlayerUIScript ourUIScript;
+
     void Awake()
     {
         //Setting up a new instance of scripts to not run into errors with other players
@@ -172,7 +175,12 @@ public class PlayerController : MonoBehaviour
     {
         playerStats.stat[StatType.health] = Mathf.Clamp(playerStats.stat[StatType.health] + i, 0, Mathf.Infinity);
 
-        // Debug.Log(playerStats.stat[StatType.health] + " health remaining");
+        if (ourUIScript != null)
+        {
+            ourUIScript.UpdateHealth();
+        }
+
+        
         if (playerStats.stat[StatType.health] <= 0 && !dead)
         {
             CommitDie();
@@ -207,6 +215,8 @@ public class PlayerController : MonoBehaviour
         }
 
         ourPlayerObject = GeneralManager.manager.playerObjects[playerNumber];
+        ourUIScript = GeneralManager.manager.playerUIObjects[playerNumber];
+        ourUIScript.InitializePlayerUI(this);
 
         foreach(Renderer renderer in GetComponentsInChildren<Renderer>())
         {

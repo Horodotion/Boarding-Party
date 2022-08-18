@@ -16,7 +16,7 @@ public class ProjectileScript : MonoBehaviour
     public Faction hostileFaction;
     public int damage;
     public List<Status> ourStatusEffects;
-    public int projectileSpeed;
+    public float projectileSpeed;
     [HideInInspector] public Rigidbody rb;
     public float lifeSpan;
     public PlayerController ourPlayer;
@@ -57,27 +57,27 @@ public class ProjectileScript : MonoBehaviour
         {
             hit.GetComponent<EnemyController>().ChangeHealth(-damage, ourPlayer);
 
-            if (ourStatusEffects.Count != 0)
-            {
-                for (int i = 0; i < ourStatusEffects.Count; i++)
-                {
-                    Status newStatus = Instantiate(ourStatusEffects[i]);
-                    newStatus.ApplyStatusEffectToEnemy(hit.GetComponent<EnemyController>());
-                }
-            }
+            // if (ourStatusEffects.Count != 0)
+            // {
+            //     for (int i = 0; i < ourStatusEffects.Count; i++)
+            //     {
+            //         Status newStatus = Instantiate(ourStatusEffects[i]);
+            //         newStatus.ApplyStatusEffectToEnemy(hit.GetComponent<EnemyController>());
+            //     }
+            // }
         }
         else if (hostileFaction == Faction.Player && hit.GetComponent<PlayerController>() != null)
         {
             hit.GetComponent<PlayerController>().ChangeHealth(-damage);
 
-            if (ourStatusEffects.Count != 0)
-            {
-                for (int i = 0; i < ourStatusEffects.Count; i++)
-                {
-                    Status newStatus = Instantiate(ourStatusEffects[i]);
-                    newStatus.ApplyStatusEffectToPlayer(hit.GetComponent<PlayerController>());
-                }
-            }
+            // if (ourStatusEffects.Count != 0)
+            // {
+            //     for (int i = 0; i < ourStatusEffects.Count; i++)
+            //     {
+            //         Status newStatus = Instantiate(ourStatusEffects[i]);
+            //         newStatus.ApplyStatusEffectToPlayer(hit.GetComponent<PlayerController>());
+            //     }
+            // }
         }
     }
 }
