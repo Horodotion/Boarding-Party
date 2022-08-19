@@ -69,11 +69,6 @@ public class GeneralManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        ExitMenus();
-    }
-
     void Update()
     {
         if (buttonPressedForFrame == true)
@@ -245,11 +240,14 @@ public class GeneralManager : MonoBehaviour
     {
         if (menu != null)
         {
+            Time.timeScale = 0;
+
             if (GeneralManager.manager.inGameUI != null)
             {
                 GeneralManager.manager.inGameUI.SetActive(false);
             }
 
+            gameState = GameState.inMenu;
             menu.Activate();
 
             foreach(PlayerController player in playerList)

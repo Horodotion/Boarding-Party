@@ -6,17 +6,38 @@ using UnityEngine;
 public class Dash : Ability
 {
     public Vector3 movementVector;
-    public override void Activate(float i = 0)
+    public Vector2 storedPlayerMoveAxis;
+
+    public override void UseAbility()
     {
-        if (stacks > 0)
+        if (player.moveAxis == Vector2.zero)
         {
-            movementVector = new Vector3(player.moveAxis.x, 0, player.moveAxis.y).normalized * player.playerStats.stat[StatType.speed] * 2;
-            base.Activate(i);
+            movementVector = new Vector3(storedPlayerMoveAxis.x, 0, storedPlayerMoveAxis.y).normalized;
         }
+        else
+        {
+            movementVector = new Vector3(player.moveAxis.x, 0, player.moveAxis.y).normalized;
+        }
+
+
+        movementVector *= player.playerStats.stat[StatType.speed] * 2;
+
+        // float forwardDirection = Vector3.Dot(movementVector.normalized, player.transform.forward);
+        // float sideDirection = Vector3.Dot(movementVector.normalized, player.transform.right);
+        Vector3 animatorDirection = player.GetDirectionForAnimator(movementVector);
+
+        player.animator.SetFloat(player.animUpDown, animatorDirection.z);
+        player.animator.SetFloat(player.animLeftRight, animatorDirection.x);
     }
 
     public override void ReduceCooldown(float i)
     {
+        if (player.moveAxis != Vector2.zero)
+        {
+            storedPlayerMoveAxis = player.moveAxis;
+        }
+
+
         switch (abilityState)
         {
             case (AbilityState.cooldown):
@@ -46,5 +67,6 @@ public class Dash : Ability
     {
         player.playerState = PlayerState.inGame;
         abilityState = AbilityState.cooldown;
+        player.moveAxis = Vector2.zero;
     }
 }

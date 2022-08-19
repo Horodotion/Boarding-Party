@@ -39,8 +39,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Collider playerCollider;
 
     //Variables for the player animations
-    private string animUpDown = "UpDown";
-    private string animLeftRight = "LeftRight";
+    [HideInInspector] public string animUpDown = "UpDown";
+    [HideInInspector] public string animLeftRight = "LeftRight";
 
     //Variables for movement
     [HideInInspector] public Vector2 moveAxis;
@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        bool gmExists = false;
+
         for (int i = 0; i < GeneralManager.playerList.Length; i++)
         {
             if (GeneralManager.playerList[i] == null)
@@ -68,11 +70,18 @@ public class PlayerController : MonoBehaviour
                 playerNumber = i;
                 playerDisplayNumber = i+1;
                 PlayerSpawned();
+
+                gmExists = true;
                 break;
             }
         }
-    }
 
+        if (!gmExists)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     void FixedUpdate()
     {
         switch (playerState)
@@ -111,20 +120,21 @@ public class PlayerController : MonoBehaviour
 
             //Setting the animation correct animation state of the player.
             //If the left stick is not in use, setting the rotation to the movedirection.
+            Vector3 animatorDirection = GetDirectionForAnimator(moveDirection);
+
             if (lookDirection == Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
-                float forwardDirection = Vector3.Dot(moveDirection.normalized, transform.forward);
-                animator.SetFloat(animUpDown, forwardDirection, 0.1f, Time.deltaTime);
+                animator.SetFloat(animUpDown, animatorDirection.z, 0.1f, Time.deltaTime);
                 animator.SetFloat(animLeftRight, 0, 0.1f, Time.deltaTime);
             }
             else
             {
-                float forwardDirection = Vector3.Dot(moveDirection.normalized, transform.forward);
-                float sideDirection = Vector3.Dot(moveDirection.normalized, transform.right);
-                animator.SetFloat(animUpDown, forwardDirection, 0.1f, Time.deltaTime);
-                animator.SetFloat(animLeftRight, sideDirection, 0.1f, Time.deltaTime);
+                // float forwardDirection = Vector3.Dot(moveDirection.normalized, transform.forward);
+                // float sideDirection = Vector3.Dot(moveDirection.normalized, transform.right);
+                animator.SetFloat(animUpDown, animatorDirection.z, 0.1f, Time.deltaTime);
+                animator.SetFloat(animLeftRight, animatorDirection.x, 0.1f, Time.deltaTime);
             }
         }
         //If no movement is detected, set the animation to the idle
@@ -208,12 +218,6 @@ public class PlayerController : MonoBehaviour
             movementAbility = InitializeAbility(movementAbility);
         }
 
-        if (GeneralManager.gameState == GameState.inMenu || GeneralManager.gameState == GameState.inMainMenu)
-        {
-            playerState = PlayerState.inMenu;
-            GeneralManager.previousPlayerState[playerNumber] = PlayerState.inMenu;
-        }
-
         ourPlayerObject = GeneralManager.manager.playerObjects[playerNumber];
         ourUIScript = GeneralManager.manager.playerUIObjects[playerNumber];
         ourUIScript.InitializePlayerUI(this);
@@ -232,6 +236,12 @@ public class PlayerController : MonoBehaviour
         if (GetComponent<Collider>() != null)
         {
             playerCollider = GetComponent<Collider>();
+        }
+
+        if (GeneralManager.gameState == GameState.inMenu || GeneralManager.gameState == GameState.inMainMenu)
+        {
+            playerState = PlayerState.inMenu;
+            GeneralManager.previousPlayerState[playerNumber] = PlayerState.inMenu;
         }
     }
 
@@ -278,7 +288,7 @@ public class PlayerController : MonoBehaviour
         {
             if (dead == false)
             {
-                genericAbility.Activate(Time.deltaTime);
+                genericAbility.Activate();
             }
             else
             {
@@ -339,11 +349,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnMovementAxis(InputAction.CallbackContext ctx)
     {
-        moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
-
-        if (ctx.started && playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+        if (playerState != PlayerState.idle)
         {
-            GeneralManager.manager.CycleThroughMenu((int)moveAxis.y);
+            moveAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
+
+            if (playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+            {
+                GeneralManager.manager.CycleThroughMenu((int)moveAxis.y);
+            }
         }
     }
 
@@ -352,8 +365,18 @@ public class PlayerController : MonoBehaviour
         lookAxis = new Vector2(ctx.ReadValue<Vector2>().x, ctx.ReadValue<Vector2>().y);
     }
 
-    void OnPlayerJoined()
+    public void OnPlayerJoined()
     {
         
+    }
+
+    public Vector3 GetDirectionForAnimator(Vector3 directionToLook)
+    {
+        Vector3 vectorToReturn = Vector3.zero;
+
+        vectorToReturn.z = Mathf.Clamp(Vector3.Dot(directionToLook.normalized, transform.forward), -1, 1);
+        vectorToReturn.x = Mathf.Clamp(Vector3.Dot(directionToLook.normalized, transform.right), -1, 1);
+
+        return vectorToReturn;
     }
 }

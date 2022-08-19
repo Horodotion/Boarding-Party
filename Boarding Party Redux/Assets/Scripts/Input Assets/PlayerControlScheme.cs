@@ -369,7 +369,7 @@ public partial class @PlayerControlScheme : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Keyboard;GamePad"",
                     ""action"": ""primaryButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

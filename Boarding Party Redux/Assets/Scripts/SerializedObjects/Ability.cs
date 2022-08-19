@@ -19,22 +19,33 @@ public abstract class Ability : ScriptableObject
     public int stacks;
     public int stacksMax;
     
-    public virtual void Activate(float i = 0)
+    public virtual void Activate()
     {
         if (stacks > 0)
         {
+            cooldown = cooldownDuration;
             castintTime = castingDuration;
             player.playerState = PlayerState.idle;
             abilityState = AbilityState.casting;
-            
+
+            UseAbility();
+
             stacks--;
-            if (stacks <= 0)
+            if (stacks < 0)
             {
                 stacks = 0;
             }
+
+            Debug.Log(stacks + " Remaining");
         }
     }
     
+    public virtual void UseAbility()
+    {
+
+    }
+
+
     public virtual void Casting()
     {
         castintTime = Mathf.Clamp(castintTime - Time.deltaTime, 0, Mathf.Infinity);
@@ -59,6 +70,7 @@ public abstract class Ability : ScriptableObject
             }
             if (cooldown <= 0)
             {
+                
                 stacks++;
             }
         }

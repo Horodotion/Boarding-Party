@@ -13,7 +13,7 @@ public class WinScreenScript : MenuScript
 
     public GameObject allPlayersSurvivedIcon;
 
-    void Awake()
+    void Start()
     {
         if (GeneralManager.winScreen == null)
         {
@@ -23,11 +23,9 @@ public class WinScreenScript : MenuScript
         {
             Destroy(this.gameObject);
         }
-    }
 
-    void Start()
-    {
         nextLevelButton.onClick.AddListener(GeneralManager.manager.LoadNextLevel);
         mainMenuButton.onClick.AddListener(GeneralManager.manager.ReturnToMainMenu);
+        gameObject.SetActive(false);
     }
 }

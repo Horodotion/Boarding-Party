@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6604444373907234329}
   - component: {fileID: 8954075677871680211}
   - component: {fileID: -498864563976299681}
-  - component: {fileID: -8485924439907023484}
   m_Layer: 0
   m_Name: CoinLargePile
   m_TagString: Untagged
@@ -57,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &-498864563976299681
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -95,16 +96,3 @@ CapsuleCollider:
   m_Height: 1.0528444
   m_Direction: 1
   m_Center: {x: 0, y: 0.5264222, z: 0}
---- !u!114 &-8485924439907023484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7440993402452052742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f27a26bfad6b740aea2e6d30140afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ourPower: {fileID: 11400000, guid: c0a66aa17a3780d4584a1971c75b2387, type: 2}

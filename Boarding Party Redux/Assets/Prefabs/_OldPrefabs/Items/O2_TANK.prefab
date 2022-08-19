@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1768186302261641423}
   - component: {fileID: 4570356867516380165}
   - component: {fileID: 8161437417246073393}
-  - component: {fileID: 9049398370589434280}
   m_Layer: 0
   m_Name: O2_TANK
   m_TagString: Enemy
@@ -58,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &8161437417246073393
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -96,19 +97,6 @@ CapsuleCollider:
   m_Height: 1.4683541
   m_Direction: 1
   m_Center: {x: 0, y: 0.73417705, z: 0}
---- !u!114 &9049398370589434280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2624990737640134096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f27a26bfad6b740aea2e6d30140afd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ourPower: {fileID: 11400000, guid: fdf152b17f25d174e9748e70357275f4, type: 2}
 --- !u!1 &2930927442737516342
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,5 +187,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0

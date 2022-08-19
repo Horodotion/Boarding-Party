@@ -453,6 +453,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8212011692550380783, guid: 7a86967e489b0b0489165437d3354457, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8240228897306716575, guid: 7a86967e489b0b0489165437d3354457, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -489,19 +493,27 @@ MonoBehaviour:
   playerStats: {fileID: 11400000, guid: ebd24bb64a7b97147b8018c8857b2900, type: 2}
   playerNumber: 0
   playerDisplayNumber: 0
+  deathCount: 0
+  respawnCost: 0
   playerState: 0
   playerInputs: {fileID: 0}
   gun: {fileID: 11400000, guid: 3b0a620f7a02ff34299d9e25a6a329a9, type: 2}
   genericAbility: {fileID: 11400000, guid: 7b1cb32a1c767f74285eb6c41a1e11df, type: 2}
   movementAbility: {fileID: 0}
   playerModel: {fileID: 8941226444322856011}
+  ourPlayerObject:
+    playerMaterial: {fileID: 0}
+    playerAura: {fileID: 0}
   ourPlayerController: {fileID: 0}
   animator: {fileID: 0}
   firePosition: {fileID: 0}
   playerCollider: {fileID: 0}
+  animUpDown: UpDown
+  animLeftRight: LeftRight
   moveAxis: {x: 0, y: 0}
   lookAxis: {x: 0, y: 0}
   dead: 0
+  ourUIScript: {fileID: 0}
 --- !u!114 &7750282789914685321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,8 +667,12 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d8af0ca3-c31f-4e7a-b82e-bf89f2c4a7c8
     m_ActionName: PlayerControls/selectButton[/XInputControllerWindows/select,/XInputControllerWindows/select]
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: GamePad
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 19a7d146-c7bb-44f0-8a1c-b6f3c1fb24d0
+    m_ActionName: PlayerControls/AnyAction[/Keyboard/anyKey]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
