@@ -82,12 +82,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: d81da96ee3a38d446b608d03454ef8bb, type: 2}
-  navAgent: {fileID: 1076344330}
+  currentState: 0
   dead: 0
-  damage: 0
-  explosionRadius: 0
+  navAgent: {fileID: 1076344330}
+  targettedPlayer: {fileID: 0}
+  lastDetectedPlayer: 0
+  lastDetectedPlayerDuration: 5
+  hostileFaction: 0
+  enemyAnim: {fileID: 0}
+  damage: 75
+  explosionRadius: 2
   destroyEffectPrefab: {fileID: 6661819908787606856, guid: 8d9d8de9a8557434780039f16e09b996, type: 3}
-  secondsUntilParticlesAreDestroyed: 0
+  secondsUntilParticlesAreDestroyed: 1.5
 --- !u!1001 &858454096140806571
 PrefabInstance:
   m_ObjectHideFlags: 0

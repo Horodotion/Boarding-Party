@@ -15,12 +15,14 @@ MonoBehaviour:
   baseStatList:
     statValues:
     - stat: 0
-      value: 20
+      value: 200
     - stat: 1
-      value: 20
+      value: 5
     - stat: 3
       value: 2
     - stat: 4
       value: 10
+    - stat: 6
+      value: 40
   maxStatList:
     statValues: []
