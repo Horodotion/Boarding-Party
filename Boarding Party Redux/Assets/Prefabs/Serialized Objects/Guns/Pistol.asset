@@ -17,7 +17,7 @@ MonoBehaviour:
   gunDamage: 100
   gunProjectileSpeed: 30
   projectileLifeSpan: 3
-  rateOfFire: 2
+  rateOfFire: 3
   nextTimeToFire: 0
   hostileFaction: 1
   statusEffects: []
