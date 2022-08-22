@@ -15,16 +15,16 @@ MonoBehaviour:
   baseStatList:
     statValues:
     - stat: 0
-      value: 100
+      value: 700
     - stat: 1
-      value: 5
+      value: 3
     - stat: 3
       value: 0
     - stat: 4
-      value: 20
+      value: 15
     - stat: 5
-      value: 0.3
+      value: 0.2
     - stat: 6
-      value: 100
+      value: 200
   maxStatList:
     statValues: []

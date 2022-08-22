@@ -17,11 +17,13 @@ MonoBehaviour:
     - stat: 0
       value: 10
     - stat: 1
-      value: 1000
+      value: 75
     - stat: 3
       value: 5
     - stat: 4
       value: 10
+    - stat: 6
+      value: 100
   maxStatList:
     statValues:
     - stat: 0

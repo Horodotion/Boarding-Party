@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2463613561771538404}
+  - component: {fileID: 4753013565167886098}
+  - component: {fileID: 1732719948522066007}
   m_Layer: 0
   m_Name: Solo_Inside
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,6 +33,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4753013565167886098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -8344786145575967167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5360107, y: 4.252655, z: 0.7641779}
+  m_Center: {x: -2.2584753, y: 2.250904, z: -0.39269644}
+--- !u!65 &1732719948522066007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -8344786145575967167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9121971, y: 4.3739386, z: 4.502281}
+  m_Center: {x: -4.54111, y: 2.2118573, z: 1.7511401}
 --- !u!1001 &5524381212109138272
 PrefabInstance:
   m_ObjectHideFlags: 0
