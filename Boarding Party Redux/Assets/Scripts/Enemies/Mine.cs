@@ -12,7 +12,7 @@ public class Mine : EnemyController
 
     public override void Aggro()
     {
-        if (!DetectPlayers() || targettedPlayer == null)
+        if (targettedPlayer == null)
         {
             currentState = EnemyState.searching;
             lastDetectedPlayer = lastDetectedPlayerDuration;

@@ -43,7 +43,7 @@ public class Turret : EnemyController
 
     public override void Searching()
     {
-        if (DetectPlayers())
+        if (targettedPlayer != null)
         {
             currentState = EnemyState.aggro;
         }
@@ -56,7 +56,7 @@ public class Turret : EnemyController
 
     public override void Aggro()
     {
-        if (!DetectPlayers() || targettedPlayer == null)
+        if (targettedPlayer == null)
         {
             currentState = EnemyState.searching;
             lastDetectedPlayer = lastDetectedPlayerDuration;

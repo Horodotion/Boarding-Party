@@ -1853,7 +1853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2849623316472351489}
   - component: {fileID: 570363882748293020}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2140,7 +2140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7825432075662363909}
   - component: {fileID: 5099741340247191449}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

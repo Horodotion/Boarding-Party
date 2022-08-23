@@ -22,8 +22,11 @@ public class EnemyController : MonoBehaviour
     [HideInInspector] public GameObject targettedPlayer;
     [HideInInspector] public float lastDetectedPlayer;
     [HideInInspector] public float lastDetectedPlayerDuration = 5f;
+    [HideInInspector] public float playerDetection = 1f;
+    [HideInInspector] public float playerDetectionRate = 0.2f;
     [HideInInspector] public Faction hostileFaction = Faction.Player;
     [HideInInspector] public Animator enemyAnim;
+
 
     public virtual void Awake()
     {
@@ -39,10 +42,21 @@ public class EnemyController : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
+        if (playerDetection < 0f)
+        {
+            playerDetection = GeneralManager.ReduceToZeroByTime(playerDetection);
+        }
+        else
+        {
+            playerDetection = playerDetectionRate;
+            DetectPlayers();
+        }
+        
+
         switch (currentState)
         {
             case EnemyState.idle:
-                Idle();               
+                Idle();
                 break;
 
             case EnemyState.searching:
@@ -61,7 +75,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Idle()
     {
-        if (DetectPlayers())
+        if (targettedPlayer != null)
         {
             currentState = EnemyState.aggro;
         }
@@ -69,7 +83,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Searching()
     {
-        if (DetectPlayers())
+        if (targettedPlayer != null)
         {
             currentState = EnemyState.aggro;
         }
@@ -85,7 +99,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Aggro()
     {
-        if (!DetectPlayers() || targettedPlayer == null)
+        if (targettedPlayer == null)
         {
             currentState = EnemyState.searching;
             lastDetectedPlayer = lastDetectedPlayerDuration;
@@ -99,18 +113,18 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public virtual bool DetectPlayers()
+    public virtual void DetectPlayers()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, enemyStats.stat[StatType.detectionRange]); // 10f);
         List<GameObject> players = new List<GameObject>();
-        bool playerDetected = false;
 
         foreach (Collider hit in hitColliders)
         {
             if (hit.gameObject.tag == "Player" && !players.Contains(hit.gameObject))
             {
                 RaycastHit raycastHit;
-                Physics.Raycast(transform.position, hit.gameObject.transform.position - transform.position, out raycastHit);
+                Vector3 adjustedPosition = new Vector3(transform.position.x, 1f, transform.position.z);
+                Physics.Raycast(adjustedPosition, hit.gameObject.transform.position - transform.position, out raycastHit);
 
                 if (hit.gameObject != null && raycastHit.collider != null && raycastHit.collider.gameObject == hit.gameObject)
                 {
@@ -136,19 +150,22 @@ public class EnemyController : MonoBehaviour
             }
 
             targettedPlayer = closestPlayer;
-            playerDetected = true;
         }
         else if (players.Count == 1)
         {
             targettedPlayer = players[0];
-            playerDetected = true;
         }
         else if (players.Count == 0)
         {
+            if (targettedPlayer != null)
+            {
+                Debug.Log(gameObject.name);
+            }
+
             targettedPlayer = null;
         }
 
-        return playerDetected;
+        return;
     }
 
     public virtual void ChangeHealth(int i, PlayerController playerCreditedForKill = null)
