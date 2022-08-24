@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f603db61dbe744e99565e352fc5ddf, type: 3}
+  m_Name: Grenade
+  m_EditorClassIdentifier: 
+  abilityState: 1
+  player: {fileID: 0}
+  cooldown: 0
+  cooldownDuration: 0
+  castingDuration: 0
+  castintTime: 0
+  stacks: 0
+  stacksMax: 0
+  explosive: {fileID: 0}
+  damage: 0
+  explosiveLifetime: 0
+  explosiveProjectileSpeed: 0
+  explosiveDamage: 0

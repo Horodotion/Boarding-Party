@@ -27,4 +27,16 @@ MonoBehaviour:
     - stat: 6
       value: 200
   maxStatList:
-    statValues: []
+    statValues:
+    - stat: 0
+      value: 700
+    - stat: 1
+      value: 3
+    - stat: 3
+      value: 0
+    - stat: 4
+      value: 15
+    - stat: 5
+      value: 0.2
+    - stat: 6
+      value: 200

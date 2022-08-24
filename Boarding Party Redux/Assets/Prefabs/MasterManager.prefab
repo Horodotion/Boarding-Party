@@ -474,7 +474,7 @@ MonoBehaviour:
   m_NotificationBehavior: 0
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -540,7 +540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6936424924492859377, guid: abe1790215c1f604c8a0a1c052dce8cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6936424924492859378, guid: abe1790215c1f604c8a0a1c052dce8cf, type: 3}
       propertyPath: m_Pivot.x
@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961941177233926972, guid: dc42438df01df084c98d8a4ea5a7cb66, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6961941177233926975, guid: dc42438df01df084c98d8a4ea5a7cb66, type: 3}
       propertyPath: m_Pivot.x

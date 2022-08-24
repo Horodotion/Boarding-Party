@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityState: 2
   player: {fileID: 0}
-  cooldown: 5
-  cooldownDuration: 5
+  cooldown: 1
+  cooldownDuration: 2
   castingDuration: 0.5
   castintTime: 0
   stacks: 2

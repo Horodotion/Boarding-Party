@@ -9,13 +9,9 @@ public class ExplosiveAbility : Ability
     public float damage, explosiveLifetime, explosiveProjectileSpeed;
     public int explosiveDamage;
 
-    public override void Activate(float i = 0)
+    public override void UseAbility()
     {
-        if (stacks > 0)
-        {
-            Fire(player);
-            base.Activate(i);
-        }
+
     }
 
     public override void Fire(PlayerController player)

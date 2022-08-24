@@ -25,8 +25,6 @@ public enum StatType
     public float value;
 }
 
-[Serializable] public class StatDictionary : SerializableDictionary<StatType, float> {}
-
 [Serializable]
 [CreateAssetMenu(menuName = "Stat set")]
 public class Stats : ScriptableObject

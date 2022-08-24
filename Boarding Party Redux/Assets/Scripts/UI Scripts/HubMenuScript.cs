@@ -14,7 +14,7 @@ public class HubMenuScript : MenuScript
     
     public GameObject ControlsPanel;
 
-    void Awake()
+    void Start()
     {
         if (GeneralManager.hubMenu == null)
         {
@@ -29,10 +29,6 @@ public class HubMenuScript : MenuScript
         controlsButton.onClick.AddListener(ShowControlsPanel);
         exitGameButton.onClick.AddListener(Application.Quit);
 
-    }
-
-    void Start()
-    {
         GeneralManager.OpenMenu(this);
     }
 

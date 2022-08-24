@@ -15,7 +15,7 @@ public class PauseMenuScript : MenuScript
 
     public GameObject ControlsPanel;
 
-    void Awake()
+    void Start()
     {
         if (GeneralManager.pauseMenu == null)
         {
@@ -25,10 +25,7 @@ public class PauseMenuScript : MenuScript
         {
             Destroy(this.gameObject);
         }
-    }
 
-    void Start()
-    {
         resumeButton.onClick.AddListener(GeneralManager.manager.ExitMenus);
         controlsButton.onClick.AddListener(ShowControlsPanel);
         mainMenuButton.onClick.AddListener(GeneralManager.manager.ReturnToMainMenu);
@@ -37,6 +34,8 @@ public class PauseMenuScript : MenuScript
         {
             exitButton.onClick.AddListener(() => {GeneralManager.DisconnectPlayer(i);});
         }
+
+        gameObject.SetActive(false);
     }
 
     public void ShowControlsPanel()
