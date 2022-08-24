@@ -82,6 +82,14 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    void Start()
+    {
+        if (PlayerCamera.instance != null)
+        {
+            PlayerCamera.instance.MovePlayerToSpawn(this);
+        }
+    }
+
     void FixedUpdate()
     {
         switch (playerState)
@@ -243,6 +251,11 @@ public class PlayerController : MonoBehaviour
             playerState = PlayerState.inMenu;
             GeneralManager.previousPlayerState[playerNumber] = PlayerState.inMenu;
         }
+
+        if (PlayerCamera.instance != null)
+        {
+            PlayerCamera.instance.MovePlayerToSpawn(this);
+        }
     }
 
     public void CommitDie()
@@ -268,6 +281,11 @@ public class PlayerController : MonoBehaviour
             playerStats.ResetStat(StatType.health);
             playerModel.SetActive(true);
             dead = false;
+
+            if (PlayerCamera.instance != null)
+            {
+                PlayerCamera.instance.MovePlayerToSpawn(this);
+            }
 
             Debug.Log("I lived bitch");
         }

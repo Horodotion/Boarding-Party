@@ -19,7 +19,7 @@ MonoBehaviour:
     - stat: 1
       value: 0
     - stat: 3
-      value: 10
+      value: 7
     - stat: 6
       value: 0
   maxStatList:
@@ -29,4 +29,4 @@ MonoBehaviour:
     - stat: 1
       value: 100
     - stat: 3
-      value: 5
+      value: 7
