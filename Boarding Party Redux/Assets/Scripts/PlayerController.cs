@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("UI Components")]
     public PlayerUIScript ourUIScript;
+    public List<InteractableObject> interactableObjectList;
+
 
     void Awake()
     {
@@ -274,6 +276,7 @@ public class PlayerController : MonoBehaviour
         if (GeneralManager.manager.score >= respawnCost)
         {
             GeneralManager.manager.score -= respawnCost;
+            UpdateScore(respawnCost);
             GeneralManager.playersAliveInGame++;
 
             playerState = PlayerState.inGame;
@@ -293,6 +296,13 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Come back when you're a little mmmmm... Richer?");
         }
+    }
+
+    public void UpdateScore(int scoreToRecieve)
+    {
+        playerStats.stat[StatType.score] += scoreToRecieve;
+        ourUIScript.UpdateScore();
+        Debug.Log(scoreToRecieve);
     }
 
     public void DisconnectPlayer()
@@ -330,9 +340,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnUtilityButton(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+        if (ctx.performed)
         {
-            GeneralManager.manager.currentlySelectedButton.onClick.Invoke();
+            if (playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
+            {
+                GeneralManager.manager.currentlySelectedButton.onClick.Invoke();
+            }
+            else if (playerState == PlayerState.inGame && interactableObjectList.Count != 0)
+            {
+                if (interactableObjectList.Count == 1)
+                {
+                    interactableObjectList[0].Interact(this);
+                }
+                else
+                {
+                    for(int i = 0; i > interactableObjectList.Count; i++)
+                    {
+                        
+                    }
+                }
+            }
         }
     }
 

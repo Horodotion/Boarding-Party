@@ -270,6 +270,12 @@ public class GeneralManager : MonoBehaviour
 
     }
 
+    public static void UpdateScore(int scoreToRecieve)
+    {
+        manager.score += scoreToRecieve;
+
+    }
+
     public static float ReduceToZeroByTime(float numberToReduce)
     {
         numberToReduce = Mathf.Clamp(numberToReduce - Time.deltaTime, 0, Mathf.Infinity);
