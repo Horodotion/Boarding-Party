@@ -192,13 +192,11 @@ public class EnemyController : MonoBehaviour
 
     public virtual void GivePoints(int scoreToGive, PlayerController playerCreditedForKill = null)
     {
-        GeneralManager.manager.score += scoreToGive;
+        GeneralManager.UpdateScore(scoreToGive);
 
         if (playerCreditedForKill != null)
         {
-            playerCreditedForKill.playerStats.stat[StatType.score] += scoreToGive;
-            playerCreditedForKill.ourUIScript.UpdateScore();
-            Debug.Log(scoreToGive);
+            playerCreditedForKill.UpdateScore(scoreToGive);
         }
         else
         {
@@ -206,8 +204,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (player != null)
                 {
-                    player.playerStats.stat[StatType.score] += scoreToGive / 4;
-                    player.ourUIScript.UpdateScore();
+                    player.UpdateScore(scoreToGive / 4);
                 }
             }
         }
