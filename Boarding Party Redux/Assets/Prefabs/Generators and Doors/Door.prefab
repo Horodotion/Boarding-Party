@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 474915945324903022}
   m_Layer: 0
   m_Name: DoorColliders
-  m_TagString: Wall
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,8 +138,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 3, z: 1.25}
-  m_Center: {x: 0, y: 1.5, z: 2.4}
+  m_Size: {x: 0.5, y: 3, z: 1.7957306}
+  m_Center: {x: 0, y: 1.5, z: 2.5450826}
 --- !u!65 &474915945324903022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151,8 +151,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 3, z: 1.25}
-  m_Center: {x: 0, y: 1.5, z: -2.4}
+  m_Size: {x: 0.5, y: 3, z: 2.0851302}
+  m_Center: {x: 0, y: 1.5, z: -2.5922048}
 --- !u!1 &5228525286016263294
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2439306031913442291}
   m_Layer: 2
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

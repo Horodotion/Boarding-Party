@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorType: 0
-  powerGridID: 01000000
+  powerGridID: 02000000
   keyRequired: 0
   openDoor: 0
   doorAnim: {fileID: 0}

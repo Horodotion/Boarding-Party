@@ -19,9 +19,9 @@ MonoBehaviour:
     - stat: 1
       value: 5
     - stat: 3
-      value: 2
+      value: 3.5
     - stat: 4
-      value: 10
+      value: 15
     - stat: 6
       value: 40
   maxStatList:
