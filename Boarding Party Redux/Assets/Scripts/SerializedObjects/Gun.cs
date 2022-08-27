@@ -9,7 +9,7 @@ public abstract class Gun : ScriptableObject
     public GameObject gunProjectilePrefab;
     public int gunDamage;
     public int gunProjectileSpeed;
-    public int projectileLifeSpan;
+    public float projectileLifeSpan;
     public float rateOfFire;
     public float nextTimeToFire;
     public Faction hostileFaction;

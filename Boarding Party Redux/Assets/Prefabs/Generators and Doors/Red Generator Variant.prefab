@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5494977698681418338}
   - component: {fileID: 2333386301115498614}
   m_Layer: 3
-  m_Name: Plane
+  m_Name: MinimapBlip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

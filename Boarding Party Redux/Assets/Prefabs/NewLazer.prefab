@@ -211,7 +211,7 @@ MonoBehaviour:
   ourStatusEffects: []
   projectileSpeed: 30
   rb: {fileID: 0}
-  lifeSpan: 5
+  lifeSpan: 0
   ourPlayer: {fileID: 0}
 --- !u!1001 &1659657693551557857
 PrefabInstance:
