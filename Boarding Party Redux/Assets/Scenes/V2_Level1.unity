@@ -19233,7 +19233,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2883920796759874481, guid: 8cc5a05a41f66d64f85d8c8c45c6bcef, type: 3}
       propertyPath: amountOfTimeBeforeSelfDestruct
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2883920796759874494, guid: 8cc5a05a41f66d64f85d8c8c45c6bcef, type: 3}
       propertyPath: m_RootOrder
