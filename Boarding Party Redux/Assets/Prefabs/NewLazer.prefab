@@ -220,6 +220,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8352566214438318510}
     m_Modifications:
+    - target: {fileID: 332784042102967624, guid: 72f045d98506da843ab315cd28fbf9d0, type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9065608585916068141, guid: 72f045d98506da843ab315cd28fbf9d0, type: 3}
       propertyPath: m_Name
       value: VFX_Projectile
@@ -266,6 +270,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9065608585916068178, guid: 72f045d98506da843ab315cd28fbf9d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065608586693051242, guid: 72f045d98506da843ab315cd28fbf9d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065608586693051242, guid: 72f045d98506da843ab315cd28fbf9d0, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

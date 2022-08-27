@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 307896153728050012, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.b
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 307896153728050012, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.g
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 307896153728050012, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 307896153728050012, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Intensity
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -71,6 +87,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
+    - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.b
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.g
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Intensity
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5583160138355496240, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: powerGridID.Array.data[0]
       value: 1
@@ -110,6 +142,22 @@ PrefabInstance:
     - target: {fileID: 7586013783113945034, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.b
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.g
+      value: 0.02745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_Intensity
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
