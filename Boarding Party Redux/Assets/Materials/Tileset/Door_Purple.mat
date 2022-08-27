@@ -97,8 +97,8 @@ Material:
     - _UseRoughnessMap: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.47789332, g: 0.039215676, b: 0.7921569, a: 0.21176471}
-    - _EmissionColor: {r: 0.47784546, g: 0.059407253, b: 0.8396226, a: 1}
+    - _Color: {r: 0.5823531, g: 0, b: 1, a: 0.21176471}
+    - _EmissionColor: {r: 0.57982594, g: 0.08962262, b: 1, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
