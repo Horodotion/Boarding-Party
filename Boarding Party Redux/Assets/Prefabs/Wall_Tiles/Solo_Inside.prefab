@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 11e2ae79b53c021459d7d59fd75e87cc, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 115f6a578a8540645b9c5c9a4316b223, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10fe40556359f7e4cbb3235a419e555a, type: 2}
     - target: {fileID: 919132149155446097, guid: 115f6a578a8540645b9c5c9a4316b223, type: 3}
       propertyPath: m_Name
       value: BP_Wall_Inside
