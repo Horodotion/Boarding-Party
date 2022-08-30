@@ -12,7 +12,11 @@ public class ChestScript : InteractableObject
     {
         base.Awake();
 
-        anim = GetComponentInChildren<Animator>();
+        if (GetComponentInChildren<Animator>() != null)
+        {
+            anim = GetComponentInChildren<Animator>();
+        }
+        
     }
 
     public override void Interact(PlayerController player)
@@ -23,7 +27,12 @@ public class ChestScript : InteractableObject
     
     public virtual void GivePoints(int scoreToGive, PlayerController player = null)
     {
-        anim.SetTrigger("open");
+        if (anim != null)
+        {
+            anim.SetTrigger("open");
+        }
+
+        
         GeneralManager.UpdateScore(scoreToGive);
 
         if (player != null)

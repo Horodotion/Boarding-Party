@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
         if (GeneralManager.manager.score >= respawnCost)
         {
             GeneralManager.manager.score -= respawnCost;
-            UpdateScore(respawnCost);
+            UpdateScore(-respawnCost);
             GeneralManager.playersAliveInGame++;
 
             playerState = PlayerState.inGame;
