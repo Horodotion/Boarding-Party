@@ -122,6 +122,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 998034052809185898, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600022783585497994, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 4876209199967994143, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
@@ -130,10 +138,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yella Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 6526192833714509278, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7173927209303253222, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 0f5719ac84a93814bb5366f133411765, type: 2}
+      objectReference: {fileID: 2100000, guid: d6c21d1c65d88584aaaf046f94651587, type: 2}
     - target: {fileID: 8096555279071977091, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -186,6 +198,38 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 13e7bc2618a866d44b13942200c39212, type: 2}
+    - target: {fileID: 8764093292381948226, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764093292381948226, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764093292381948226, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.83184606
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764093292381948226, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: powerGridID
       value: 2

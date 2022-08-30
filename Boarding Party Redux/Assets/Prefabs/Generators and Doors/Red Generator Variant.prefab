@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5247232358386624109
 Transform:
   m_ObjectHideFlags: 0
@@ -122,6 +122,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 664237093276139474, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 107fdfaa6b6cd6d4a919cbf3b1defd28, type: 2}
     - target: {fileID: 998034052809185898, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_LocalPosition.z
       value: -7.12
@@ -129,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 2600022783585497994, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567482285826034475, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4741008033354138555, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_IsActive
@@ -281,6 +289,10 @@ PrefabInstance:
     - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: powerGridID
