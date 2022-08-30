@@ -6825,7 +6825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5559453975141074146, guid: 39c92005bca11974294e759799454738, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5559453975141074146, guid: 39c92005bca11974294e759799454738, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6969,7 +6969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2484115997761163409, guid: a3cb395994055b7409d190198239f355, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 2484115997761163409, guid: a3cb395994055b7409d190198239f355, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9174,6 +9174,10 @@ PrefabInstance:
     - target: {fileID: 7146169355870078202, guid: 39325e29ac5edd041a928db803e532d3, type: 3}
       propertyPath: m_Name
       value: Red Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146169355870078202, guid: 39325e29ac5edd041a928db803e532d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39325e29ac5edd041a928db803e532d3, type: 3}
@@ -12396,7 +12400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5559453975141074146, guid: 39c92005bca11974294e759799454738, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5559453975141074146, guid: 39c92005bca11974294e759799454738, type: 3}
       propertyPath: m_LocalRotation.w
