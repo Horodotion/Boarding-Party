@@ -3,7 +3,22 @@ guid: 987168241794c2c4b90757e67abfecd5
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Turret_Base_mat
+    second: {fileID: 2100000, guid: 33a2bec71d85c7049b913f5d41ceab80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Turret_Legs_mat
+    second: {fileID: 2100000, guid: e73c7bf265a22bc4989c6afeecb09bdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Turret_Top_mat
+    second: {fileID: 2100000, guid: 14ec3e327f4a29d429e2b6630ddfb4eb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -85,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.5
+    globalScale: 150
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
