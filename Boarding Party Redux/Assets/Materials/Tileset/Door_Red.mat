@@ -100,7 +100,7 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 0.02745098, b: 0.02745098, a: 1}
-    - _EmissionColor: {r: 16, g: 0.4392157, b: 0.4392157, a: 1}
+    - _EmissionColor: {r: 8.47419, g: 0.2662049, b: 0.2662049, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439948469376079630}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &3139221700588517001
 Light:
@@ -80,7 +80,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -124,7 +124,7 @@ Transform:
   m_LocalScale: {x: 0.095, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 439948469376079630}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6482233189118808187
 MeshFilter:
@@ -221,8 +221,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: -2.5}
   m_LocalScale: {x: 10, y: 5, z: 0.25}
   m_Children:
-  - {fileID: 7672657814421701458}
   - {fileID: 7609187509604254476}
+  - {fileID: 7672657814421701458}
   - {fileID: 5947221210294281322}
   - {fileID: 5352951208234881628}
   m_Father: {fileID: 0}
@@ -404,7 +404,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -497,7 +497,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0

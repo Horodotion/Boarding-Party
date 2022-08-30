@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 307896153728050012, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 439948469376079630, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -68,6 +72,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1666337668053920128, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666337668053920128, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666337668053920128, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6162d96fa8d7ca142a50119783ec30f5, type: 2}
@@ -102,6 +114,10 @@ PrefabInstance:
     - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_Intensity
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764639562175530623, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 5583160138355496240, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: powerGridID.Array.data[0]
@@ -143,6 +159,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7751720829934838162, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.532
+      objectReference: {fileID: 0}
     - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_Color.b
       value: 0.02745098
@@ -158,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
       propertyPath: m_Intensity
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8497202723207517374, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 119
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f32b21ecfba2704da84c41921fd7d22, type: 3}
