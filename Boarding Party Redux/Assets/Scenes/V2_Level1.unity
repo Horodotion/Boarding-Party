@@ -4734,12 +4734,12 @@ Transform:
   - {fileID: 950018777}
   - {fileID: 2026247173}
   - {fileID: 1228387912}
+  - {fileID: 1717040368}
   - {fileID: 280938910}
   - {fileID: 38620620}
+  - {fileID: 2137327138}
   - {fileID: 1924151767}
   - {fileID: 1058979000}
-  - {fileID: 1717040368}
-  - {fileID: 2137327138}
   - {fileID: 1987863221}
   - {fileID: 453842495}
   - {fileID: 2130981016}
@@ -24657,7 +24657,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.61470723, g: 0.9339623, b: 0.44495374, a: 1}
+  m_Color: {r: 0.44313726, g: 0.9339623, b: 0.5764706, a: 1}
   m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30

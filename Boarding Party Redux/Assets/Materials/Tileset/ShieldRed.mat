@@ -82,7 +82,7 @@ Material:
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
-    - _Opacity: 1
+    - _Opacity: 0.2
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -90,15 +90,15 @@ Material:
     - _UVSec: 0
     - _UseAoMap: 0
     - _UseColorMap: 0
-    - _UseEmissiveMap: 1
+    - _UseEmissiveMap: 0
     - _UseMetallicMap: 0
     - _UseNormalMap: 0
     - _UseOpacityMap: 0
     - _UseRoughnessMap: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.7921569, g: 0.06931336, b: 0.039215676, a: 0.078431375}
-    - _EmissionColor: {r: 0.26481843, g: 0.029116161, b: 0.05684584, a: 1}
+    - _Color: {r: 0.7921569, g: 0.06931334, b: 0.039215676, a: 0.44705883}
+    - _EmissionColor: {r: 0.53333336, g: 0.05490196, b: 0.10980392, a: 1}
     - _UvOffset: {r: 0, g: 0, b: 0, a: 0}
     - _UvTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
