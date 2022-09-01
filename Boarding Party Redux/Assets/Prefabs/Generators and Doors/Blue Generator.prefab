@@ -63,5 +63,29 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 119
       objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Size.x
+      value: 6.2601333
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Size.z
+      value: 3.2535172
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Center.x
+      value: -0.089221716
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Center.z
+      value: -1.6903613
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}

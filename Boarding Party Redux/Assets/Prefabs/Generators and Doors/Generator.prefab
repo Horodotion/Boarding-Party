@@ -436,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorType: 0
   powerGridID: 00000000
-  keyRequired: 0
+  locked: 0
   openDoor: 0
   doorAnim: {fileID: 0}
   doorTrigger: {fileID: 0}
@@ -943,8 +943,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.5, y: 4, z: 4}
-  m_Center: {x: 0, y: 2, z: -1.75}
+  m_Size: {x: 6.2601333, y: 4, z: 3.2535172}
+  m_Center: {x: -0.089221716, y: 2, z: -1.6903613}
 --- !u!1 &5865853138546305688
 GameObject:
   m_ObjectHideFlags: 0
