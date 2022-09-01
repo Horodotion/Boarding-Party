@@ -15,7 +15,7 @@ MonoBehaviour:
   baseStatList:
     statValues:
     - stat: 0
-      value: 2000
+      value: 700
     - stat: 1
       value: 7
     - stat: 3
@@ -23,7 +23,7 @@ MonoBehaviour:
     - stat: 4
       value: 15.5
     - stat: 5
-      value: 0.2
+      value: 0.5
     - stat: 6
       value: 200
   maxStatList:
