@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorType: 0
   powerGridID: 02000000
-  keyRequired: 0
+  locked: 0
   openDoor: 0
   doorAnim: {fileID: 0}
   doorTrigger: {fileID: 0}
@@ -129,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 2600022783585497994, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3567482285826034475, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4876209199967994143, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -229,6 +233,26 @@ PrefabInstance:
     - target: {fileID: 9021564519151388711, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Size.x
+      value: 6.2601333
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Size.z
+      value: 3.2535172
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Center.x
+      value: -0.089221716
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092846086298072472, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: m_Center.z
+      value: -1.6903613
+      objectReference: {fileID: 0}
+    - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
+      propertyPath: health
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: powerGridID
