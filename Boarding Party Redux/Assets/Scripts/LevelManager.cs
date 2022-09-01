@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public Dictionary<int, List<GameObject>> powerGrid;
+    public List<DoorScript> blastDoors;
 
     public float selfDestructTimer;
     public float amountOfTimeBeforeSelfDestruct;
@@ -76,6 +77,14 @@ public class LevelManager : MonoBehaviour
         {
             GeneralManager.manager.SetTimerText(selfDestructTimer);
             GeneralManager.manager.timerText.gameObject.SetActive(true);
+        }
+
+        for(int i = 0; i < blastDoors.Count; i++)
+        {
+            if (blastDoors[i] != null)
+            {
+                blastDoors[i].Deactivate(-1);
+            }
         }
     }
 }

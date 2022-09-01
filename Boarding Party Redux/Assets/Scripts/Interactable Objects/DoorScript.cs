@@ -18,7 +18,7 @@ public class DoorScript : MonoBehaviour
     public List<int> powerGridID;
 
     [Header("Blast Door Variables")]
-    public bool keyRequired;
+    public bool locked;
     public bool openDoor = false;
     public Animator doorAnim;
     public Collider doorTrigger;
@@ -44,7 +44,7 @@ public class DoorScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player" && col.gameObject.GetComponent<PlayerController>() != null && !openDoor)
+        if (col.gameObject.tag == "Player" && col.gameObject.GetComponent<PlayerController>() != null && !openDoor && !locked)
         {
             openDoor = true;
             doorAnim.SetTrigger(openAnim);
@@ -80,6 +80,15 @@ public class DoorScript : MonoBehaviour
                 break;
             }
         }
+
+        if (LevelManager.instance != null)
+        {
+            LevelManager.instance.blastDoors.Add(this);
+        }
+        else
+        {
+            Debug.Log("No Level Manager");
+        }
     }
 
     public void Deactivate(int powerGridIDDeactivated)
@@ -95,6 +104,14 @@ public class DoorScript : MonoBehaviour
                 break;
 
             case (DoorType.blastDoor):
+                locked = true;
+
+                if (doorAnim != null)
+                {
+                    doorAnim.SetTrigger(closeAnim);
+                }
+                break;
+
             default:    
                 break;
         }
