@@ -228,6 +228,11 @@ public class PlayerController : MonoBehaviour
             movementAbility = InitializeAbility(movementAbility);
         }
 
+        if (gun != null)
+        {
+            gun = Instantiate(gun);
+        }
+
         ourPlayerObject = GeneralManager.manager.playerObjects[playerNumber];
         ourUIScript = GeneralManager.manager.playerUIObjects[playerNumber];
         ourUIScript.InitializePlayerUI(this);
