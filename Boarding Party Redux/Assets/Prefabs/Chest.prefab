@@ -76,7 +76,7 @@ MonoBehaviour:
   triggerZone: {fileID: 0}
   interacted: 0
   score: 100
-  anim: {fileID: 0}
+  anim: {fileID: 8488551051664708665}
 --- !u!1001 &289017629463167587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84,6 +84,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8063297368546820336}
     m_Modifications:
+    - target: {fileID: 1644353690459130838, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644353690459130838, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644353690459130838, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2864261775765239172, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
       propertyPath: m_Name
       value: Crate1_low
@@ -134,8 +146,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
+--- !u!1 &2575261739621627879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2864261775765239172, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
+  m_PrefabInstance: {fileID: 289017629463167587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2951821779837742429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3239273698788060990, guid: d93d78b59bde08b45a982eeab7cd9ac8, type: 3}
   m_PrefabInstance: {fileID: 289017629463167587}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &8488551051664708665
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2575261739621627879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: afec241034f35bf40a2b4af970f622b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
