@@ -1443,10 +1443,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4127826038114844274, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 4170147503353259317, guid: bb2e6e96630327f4f967ab0082ad0b22, type: 3}
       propertyPath: m_Name
       value: CoreReactor

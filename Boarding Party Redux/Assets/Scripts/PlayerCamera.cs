@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -55,6 +56,36 @@ public class PlayerCamera : MonoBehaviour
 
     public void MovePlayerToSpawn(PlayerController player)
     {
-        player.gameObject.transform.position = transform.position + playerSpawnOffsets[player.playerNumber];
+        Vector3 newPos = transform.position + playerSpawnOffsets[player.playerNumber];
+        // NavMeshHit hit;
+        
+        if (Physics.Raycast(new Vector3(newPos.x, 1, newPos.z), transform.TransformDirection(Vector3.down), 5f))
+        {
+            player.gameObject.transform.position = newPos;
+        }
+        else
+        {
+            foreach (PlayerController playerController in GeneralManager.playerList)
+            {
+                if (playerController != null && playerController != player && !playerController.dead)
+                {
+                    newPos = playerController.gameObject.transform.position;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (Physics.Raycast(new Vector3(newPos.x, 1, newPos.z) + playerSpawnOffsets[i], transform.TransformDirection(Vector3.down), 5f))
+                        {
+                            newPos += playerSpawnOffsets[i];
+                            break;
+                        }
+                    }
+                }
+            }
+
+            player.gameObject.transform.position = newPos;
+            Debug.Log("Bitch");
+        }
+
+
+        // player.gameObject.transform.position = transform.position + playerSpawnOffsets[player.playerNumber];
     }
 }

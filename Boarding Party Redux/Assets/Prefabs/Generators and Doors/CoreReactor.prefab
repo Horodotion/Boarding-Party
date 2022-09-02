@@ -90,7 +90,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8656399756154917910}
-  - component: {fileID: 2129807587682727127}
   m_Layer: 0
   m_Name: CoreReactor
   m_TagString: Enemy
@@ -113,25 +112,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2129807587682727127
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4170147503353259317}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3cd44f00543276c41aee467505b2f805, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5405077242907199364
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +144,7 @@ Transform:
   - {fileID: 2208165152414748571}
   m_Father: {fileID: 5909046713465988389}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!33 &6903380471353049723
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -387,6 +367,7 @@ GameObject:
   - component: {fileID: 5909046713465988389}
   - component: {fileID: 6632762728158436951}
   - component: {fileID: 7419385948902043866}
+  - component: {fileID: 4180898479609558515}
   m_Layer: 0
   m_Name: FTLdrive
   m_TagString: Enemy
@@ -450,6 +431,25 @@ MonoBehaviour:
   enemyAnim: {fileID: 0}
   health: 1000
   score: 1000
+--- !u!95 &4180898479609558515
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434225502745280415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd44f00543276c41aee467505b2f805, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7507986017194351134
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ Transform:
   - {fileID: 4324587032330319933}
   m_Father: {fileID: 5909046713465988389}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &8427043346218174158
 MeshFilter:
   m_ObjectHideFlags: 0

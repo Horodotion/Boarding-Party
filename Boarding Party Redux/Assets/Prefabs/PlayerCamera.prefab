@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraOffsetFromPlayers: {x: 0, y: 0, z: 0}
   playerSpawnOffsets:
-  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
-  - {x: -1, y: 0, z: 0}
-  - {x: 0, y: 0, z: -1}
+  - {x: 1, y: 0, z: -1}
+  - {x: -1, y: 0, z: -1}
 --- !u!1 &3201972672465899997
 GameObject:
   m_ObjectHideFlags: 0

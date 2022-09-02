@@ -20,50 +20,50 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: {x: 0, y: 0, z: -90}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: -360, y: 0, z: 0}
+        inSlope: {x: -327.42523, y: 0, z: 0}
+        outSlope: {x: -327.42523, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.2308454, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -360, y: 0, z: -90}
-        inSlope: {x: -360, y: -0, z: -0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: -359.999, y: 0, z: -90}
+        inSlope: {x: -294.64438, y: 0, z: 0}
+        outSlope: {x: -294.64438, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.29361308, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: FTLdrive/Endcap1
+    path: Endcap1
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
         value: {x: 0, y: 0, z: 90}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: -360, y: 0, z: 0}
+        inSlope: {x: -332.64056, y: 0, z: 0}
+        outSlope: {x: -332.64056, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.24824713, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -360, y: 0, z: 90}
-        inSlope: {x: -360, y: -0, z: -0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: -359.999, y: 0, z: 90}
+        inSlope: {x: -320.14597, y: 0, z: 0}
+        outSlope: {x: -320.14597, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.19341157, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: FTLdrive/Endcap2
+    path: Endcap2
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -76,14 +76,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1219629145
+      path: 3413424689
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3518710243
+      path: 1383984011
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -117,26 +117,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 0
-        outSlope: -360
-        tangentMode: 69
+        inSlope: -327.42523
+        outSlope: -327.42523
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.2308454
       - serializedVersion: 3
         time: 1
-        value: -360
-        inSlope: -360
-        outSlope: 0
-        tangentMode: 69
+        value: -359.999
+        inSlope: -294.64438
+        outSlope: -294.64438
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.29361308
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -147,16 +147,16 @@ AnimationClip:
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0
+        inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -164,7 +164,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -175,16 +175,16 @@ AnimationClip:
         value: -90
         inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: -90
-        inSlope: -0
+        inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -192,7 +192,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -201,26 +201,26 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 0
-        outSlope: -360
-        tangentMode: 69
+        inSlope: -332.64056
+        outSlope: -332.64056
+        tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.24824713
       - serializedVersion: 3
         time: 1
-        value: -360
-        inSlope: -360
-        outSlope: 0
-        tangentMode: 69
+        value: -359.999
+        inSlope: -320.14597
+        outSlope: -320.14597
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.19341157
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -231,16 +231,16 @@ AnimationClip:
         value: 0
         inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0
+        inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -248,7 +248,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -259,16 +259,16 @@ AnimationClip:
         value: 90
         inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 90
-        inSlope: -0
+        inSlope: 0
         outSlope: 0
-        tangentMode: 69
+        tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -276,7 +276,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -287,7 +287,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -297,7 +297,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -307,7 +307,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: FTLdrive/Endcap1
+    path: Endcap1
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -317,7 +317,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -327,7 +327,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -337,16 +337,9 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: FTLdrive/Endcap2
+    path: Endcap2
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

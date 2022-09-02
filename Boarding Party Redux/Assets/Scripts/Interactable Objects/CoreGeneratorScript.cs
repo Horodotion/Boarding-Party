@@ -17,7 +17,10 @@ public class CoreGeneratorScript : EnemyController
 
     public void Start()
     {
-
+        if (GetComponent<Animator>() != null)
+        {
+            enemyAnim = GetComponent<Animator>();
+        }
     }
 
     public override void FixedUpdate()
@@ -38,6 +41,10 @@ public class CoreGeneratorScript : EnemyController
     {
         GivePoints(score, playerCreditedForKill);
         LevelManager.instance.BeginSelfDestructSequence();
+        if (enemyAnim != null)
+        {
+            enemyAnim.SetTrigger("CoreReactor_Spin");
+        }
 
         Destroy(this);
     }
