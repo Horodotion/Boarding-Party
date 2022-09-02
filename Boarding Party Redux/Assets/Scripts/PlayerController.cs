@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (PlayerCamera.instance != null)
         {
             PlayerCamera.instance.MovePlayerToSpawn(this);
+            ourPlayerController.enabled = true;
         }
     }
 
@@ -125,6 +126,11 @@ public class PlayerController : MonoBehaviour
             //Sets the Vector3 to have a magnetude of 1 and then scales it to the time, with an adjustable speed function
             // moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * moveSpeed[0];
             moveDirection = new Vector3(moveDirection.x, 0, moveDirection.z).normalized * Time.deltaTime * playerStats.stat[StatType.speed];
+
+            if (Mathf.Abs(transform.position.y) >= 0.1f)
+            {
+                ourPlayerController.Move(new Vector3(0f, -transform.position.y, 0f));
+            }
 
             ourPlayerController.Move(moveDirection);
 
@@ -213,6 +219,8 @@ public class PlayerController : MonoBehaviour
         ourPlayerController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         firePosition = GetComponentInChildren<SphereCollider>().gameObject;
+
+        ourPlayerController.enabled = false;
 
         playerStats = Instantiate(playerStats);
         playerStats.SetStats();

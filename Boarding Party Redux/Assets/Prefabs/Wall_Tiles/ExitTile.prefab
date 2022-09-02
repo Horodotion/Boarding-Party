@@ -56,6 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3788724843777926329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -105,7 +107,6 @@ GameObject:
   - component: {fileID: 3788724844151454104}
   - component: {fileID: 3788724844151454107}
   - component: {fileID: 3788724844151454106}
-  - component: {fileID: 3788724844151454101}
   m_Layer: 0
   m_Name: ExitTile
   m_TagString: Wall
@@ -152,6 +153,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -176,6 +178,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &3788724844151454106
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -187,21 +190,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 0, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &3788724844151454101
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3788724844151454103}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6, y: 0, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 6, y: 0.1, z: 6}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!1 &3788724844601271495
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +247,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -281,3 +272,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

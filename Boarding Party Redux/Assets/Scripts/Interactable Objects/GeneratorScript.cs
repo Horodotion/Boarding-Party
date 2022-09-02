@@ -12,7 +12,10 @@ public class GeneratorScript : EnemyController
 
     public override void Awake()
     {
-
+        if (GetComponent<Animator>() != null)
+        {
+            enemyAnim = GetComponent<Animator>();
+        }
     }
 
     public void Start()
@@ -45,6 +48,11 @@ public class GeneratorScript : EnemyController
     {
         GivePoints(score, playerCreditedForKill);
         LevelManager.instance.DisablePowerGrid(powerGridID);
+        
+        if (enemyAnim != null)
+        {
+            enemyAnim.SetTrigger("Spin_on");
+        }
 
         Destroy(this);
     }

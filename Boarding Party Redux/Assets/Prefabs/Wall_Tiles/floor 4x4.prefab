@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 858179599713505556}
   - component: {fileID: 2309260034158888469}
   - component: {fileID: 7250677323817463214}
+  - component: {fileID: 5534159372503351595}
   m_Layer: 0
   m_Name: BP_floor
   m_TagString: Untagged
@@ -162,6 +163,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5534159372503351595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520148557768353194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.000001, y: 0.1, z: 4.000001}
+  m_Center: {x: 2.0000005, y: -0.05, z: -2.0000005}
 --- !u!1 &5932650602870199151
 GameObject:
   m_ObjectHideFlags: 0
