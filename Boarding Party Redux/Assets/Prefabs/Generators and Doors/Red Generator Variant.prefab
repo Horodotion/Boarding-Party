@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: health
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 9109029769565568115, guid: ed348a9ae1924a44d8151eecfef746d3, type: 3}
       propertyPath: powerGridID
