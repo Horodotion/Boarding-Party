@@ -34955,6 +34955,10 @@ PrefabInstance:
       value: 1.6387367
       objectReference: {fileID: 0}
     - target: {fileID: 6105505772462351502, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105505772462351502, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
       propertyPath: m_Center.x
       value: -2.9880018
       objectReference: {fileID: 0}
@@ -34969,6 +34973,10 @@ PrefabInstance:
     - target: {fileID: 6105505772462351504, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
       propertyPath: m_Size.z
       value: 1.5330503
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105505772462351504, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105505772462351504, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
       propertyPath: m_Center.x
@@ -35025,6 +35033,10 @@ PrefabInstance:
     - target: {fileID: 6105505772462351507, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
       propertyPath: m_Name
       value: AccessDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937167815875404225, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714127345741788430, guid: e9dce31483caec6479a5423f11d60a13, type: 3}
       propertyPath: m_LocalPosition.x

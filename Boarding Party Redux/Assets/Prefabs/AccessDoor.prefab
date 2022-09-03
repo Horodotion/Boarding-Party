@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6105505772462351504}
   m_Layer: 0
   m_Name: AccessDoor
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 6105505772904247185}
   m_Layer: 0
   m_Name: Door?
-  m_TagString: Wall
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
