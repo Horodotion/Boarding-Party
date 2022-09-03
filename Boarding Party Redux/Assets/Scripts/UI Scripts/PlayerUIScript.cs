@@ -35,6 +35,6 @@ public class PlayerUIScript : MonoBehaviour
 
     public void UpdateDeathCounter()
     {
-        keyText.text = ourPlayer.deathCount + " - $" + (ourPlayer.deathCount * 100);
+        keyText.text = ourPlayer.deathCount + " - $" + ourPlayer.respawnCost;
     }
 }

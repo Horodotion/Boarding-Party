@@ -282,7 +282,6 @@ public class PlayerController : MonoBehaviour
         GeneralManager.playersAliveInGame--;
         deathCount++;
         ourUIScript.UpdateDeathCounter();
-        respawnCost = 100 * deathCount;
         playerCollider.enabled = false;
         
         playerModel.SetActive(false);
@@ -295,9 +294,11 @@ public class PlayerController : MonoBehaviour
     {
         if (GeneralManager.manager.score >= respawnCost)
         {
+            respawnCost = 50 * deathCount;
             GeneralManager.UpdateScore(-respawnCost);
             UpdateScore(-respawnCost);
             GeneralManager.playersAliveInGame++;
+            ourUIScript.UpdateDeathCounter();
 
             playerState = PlayerState.inGame;
             playerCollider.enabled = true;
@@ -336,16 +337,37 @@ public class PlayerController : MonoBehaviour
 
     public void OnPrimaryButton(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && playerState != PlayerState.inMenu)
+        if (ctx.performed)
         {
-            if (dead == false)
+            if (playerState != PlayerState.inMenu)
             {
-                genericAbility.Activate();
+                if (dead == false)
+                {
+                    genericAbility.Activate();
+                }
+                else
+                {
+                    Respawn();
+                }
             }
-            else
+            else if (playerState == PlayerState.inMenu && !GeneralManager.manager.buttonPressedForFrame)
             {
-                Respawn();
+                GeneralManager.manager.currentlySelectedButton.onClick.Invoke();
             }
+            // else if (playerState == PlayerState.inGame && interactableObjectList.Count != 0)
+            // {
+            //     if (interactableObjectList.Count == 1)
+            //     {
+            //         interactableObjectList[0].Interact(this);
+            //     }
+            //     else
+            //     {
+            //         for(int i = 0; i > interactableObjectList.Count; i++)
+            //         {
+                        
+            //         }
+            //     }
+            // }
         }
     }
 
@@ -389,17 +411,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnStartButton(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
-        {
-            if (playerState != PlayerState.inMenu)
-            {
-                GeneralManager.OpenMenu(GeneralManager.pauseMenu);
-            }
-            else if (GeneralManager.gameState != GameState.inMainMenu)
-            {
-                GeneralManager.manager.ExitMenus();
-            }
-        }
+        // if (ctx.started)
+        // {
+        //     if (playerState != PlayerState.inMenu)
+        //     {
+        //         GeneralManager.OpenMenu(GeneralManager.pauseMenu);
+        //     }
+        //     else if (GeneralManager.gameState != GameState.inMainMenu)
+        //     {
+        //         GeneralManager.manager.ExitMenus();
+        //     }
+        // }
     }
 
     public void OnSelectButton(InputAction.CallbackContext ctx)
