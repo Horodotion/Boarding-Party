@@ -207,6 +207,10 @@ public class GeneralManager : MonoBehaviour
             if (player != null)
             {
                 player.playerState = PlayerState.inMenu;
+                player.playerStats.ResetStat(StatType.score);
+                player.deathCount = 0;
+                player.respawnCost = 0;
+                score = 0;
             }
         }
     }

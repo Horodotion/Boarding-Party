@@ -8,8 +8,6 @@ public class HubMenuScript : MenuScript
 {
     [Header("Hub Menu Buttons")]
     public Button playGameButton;
-    public Button controlsButton;
-    public Button credits;
     public Button exitGameButton;
     
     public GameObject ControlsPanel;
@@ -26,7 +24,6 @@ public class HubMenuScript : MenuScript
         }
 
         playGameButton.onClick.AddListener(GeneralManager.manager.LoadNextLevel);
-        controlsButton.onClick.AddListener(ShowControlsPanel);
         exitGameButton.onClick.AddListener(Application.Quit);
 
         GeneralManager.OpenMenu(this);
