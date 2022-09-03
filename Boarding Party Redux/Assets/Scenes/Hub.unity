@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -714,21 +714,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinBehavior
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_UseReference
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_Name
       value: MasterManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247711, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_RootOrder

@@ -51,6 +51,7 @@ public class GeneralManager : MonoBehaviour
 
     [Header("Game Score")]
     public int score;
+    public TMP_Text scoreCounter;
 
     [Header("Player Prefab Content")]
     public PlayerObject[] playerObjects;
@@ -273,6 +274,7 @@ public class GeneralManager : MonoBehaviour
     public static void UpdateScore(int scoreToRecieve)
     {
         manager.score += scoreToRecieve;
+        manager.scoreCounter.text = "" + manager.score;
 
     }
 

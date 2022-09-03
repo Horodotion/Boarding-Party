@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276807, g: 0.21589197, b: 0.29782572, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24987,61 +24987,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinBehavior
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_PlayerPrefab
-      value: 
-      objectReference: {fileID: 3011533529907124875, guid: dd71a5cc09a6aef44999afb24555bd61, type: 3}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_NotificationBehavior
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Reference
-      value: 
-      objectReference: {fileID: -6162845893491738802, guid: ac9d7ee170154d041a6bdabaa29b674d, type: 3}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_UseReference
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
-      value: bda84ad1-f7f0-44ca-8e8a-a2bb830be19e
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Id
-      value: 64ab2428-fe21-4e7e-baa3-21b08f3345c8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Id
-      value: b90a1f7a-31e9-419d-8f73-6cf294323c1f
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
-      value: <Gamepad>/buttonSouth
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[1].m_Path
-      value: <Gamepad>/start
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247697, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_JoinAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Path
-      value: <Keyboard>/space
-      objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_Name
       value: MasterManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7978678786326247708, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978678786326247711, guid: cf1e4313cbd13044da89800890fb6192, type: 3}
       propertyPath: m_RootOrder

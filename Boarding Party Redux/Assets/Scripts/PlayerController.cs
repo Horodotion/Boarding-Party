@@ -252,9 +252,12 @@ public class PlayerController : MonoBehaviour
                 renderer.material = ourPlayerObject.playerMaterial;
             }
         }
-        if (GetComponentInChildren<Image>() != null)
+        if (GetComponentsInChildren<Image>().Length != 0)
         {
-            GetComponentInChildren<Image>().sprite = ourPlayerObject.playerAura;
+            foreach (Image aura in GetComponentsInChildren<Image>())
+            {
+                aura.sprite = ourPlayerObject.playerAura;
+            }
         }
         if (GetComponent<Collider>() != null)
         {
@@ -278,9 +281,13 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.dead;
         GeneralManager.playersAliveInGame--;
         deathCount++;
+        ourUIScript.UpdateDeathCounter();
         respawnCost = 100 * deathCount;
         playerCollider.enabled = false;
+        
         playerModel.SetActive(false);
+        GetComponent<Collider>().enabled = false;
+        ourPlayerController.enabled = false;
         dead = true;
     }
 
@@ -288,14 +295,18 @@ public class PlayerController : MonoBehaviour
     {
         if (GeneralManager.manager.score >= respawnCost)
         {
-            GeneralManager.manager.score -= respawnCost;
+            GeneralManager.UpdateScore(-respawnCost);
             UpdateScore(-respawnCost);
             GeneralManager.playersAliveInGame++;
 
             playerState = PlayerState.inGame;
             playerCollider.enabled = true;
             playerStats.ResetStat(StatType.health);
+            ourUIScript.UpdateHealth();
+
             playerModel.SetActive(true);
+            GetComponent<Collider>().enabled = true;
+            ourPlayerController.enabled = true;
             dead = false;
 
             if (PlayerCamera.instance != null)
