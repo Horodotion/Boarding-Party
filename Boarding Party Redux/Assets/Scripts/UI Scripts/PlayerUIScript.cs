@@ -32,4 +32,9 @@ public class PlayerUIScript : MonoBehaviour
     {
         scoreText.text = "" + ourPlayer.playerStats.stat[StatType.score];
     }
+
+    public void UpdateDeathCounter()
+    {
+        keyText.text = ourPlayer.deathCount + " - $" + (ourPlayer.deathCount * 100);
+    }
 }
